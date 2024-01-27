@@ -9,10 +9,16 @@ namespace KrakJam2024
         [SerializeField] private Rigidbody2D _main;
         [SerializeField] private float _leftRightMovementMultiply;
 
+        private Vector2 _movementRead;
+
+        private void OnMovement(InputValue value)
+        {
+            _movementRead = value.Get<Vector2>();
+        }
+
         private void FixedUpdate()
         {
-            var read = _input.actions[MOVEMENT].ReadValue<Vector2>();
-            _main.MovePosition(_main.position + read * _leftRightMovementMultiply * Time.fixedDeltaTime);
+            _main.MovePosition(_main.position + _movementRead * _leftRightMovementMultiply * Time.fixedDeltaTime);
         }
 
         private void OnEnable()
