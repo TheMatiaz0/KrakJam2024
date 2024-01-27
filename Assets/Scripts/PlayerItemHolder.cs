@@ -21,6 +21,7 @@ namespace KrakJam2024
 
         [Space]
         [SerializeField] private Transform _holdHere;
+        [SerializeField] private Transform _visuallyHoldThere;
         [SerializeField] private Item _currentHeldItem;
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _throwPowerMultiply = 100f;
@@ -71,6 +72,7 @@ namespace KrakJam2024
                 return;
             }
 
+            _currentHeldItem.MoveTo(_holdHere);
             _currentHeldItem.Throw(GetThrowVector() * _currentPower);
             UnregisterItemOnGround(_currentHeldItem);
             _currentHeldItem = null;
@@ -82,7 +84,7 @@ namespace KrakJam2024
         {
             if (_currentHeldItem != null)
             {
-                _currentHeldItem.MoveTo(_holdHere);
+                _currentHeldItem.MoveTo(_visuallyHoldThere);
                 if (_takenThisFrame)
                 {
                     _takenThisFrame = false;
