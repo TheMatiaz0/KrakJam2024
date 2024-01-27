@@ -80,6 +80,7 @@ namespace KrakJam2024
                         RegisterItemOnGround(_currentHeldItem);
                         _currentHeldItem = null;
                         _canThrow = false;
+                        _animator.SetBool("IsHoldingItem", false);
                     }
                     else
                     {
