@@ -6,7 +6,7 @@ namespace KrakJam2024
         [SerializeField] private Transform _transformA, _transformB;
         [SerializeField] private float _diff;
         
-        void Update()
+        private void Update()
         {
             Vector2 direction = _transformB.position - _transformA.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
