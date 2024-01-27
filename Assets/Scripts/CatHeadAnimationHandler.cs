@@ -40,7 +40,7 @@ namespace KrakJam2024
         {
             animator.SetTrigger("LetHimCook");
             var particle = Instantiate(good ? gudCookParticlePrefab : badCookParticlePrefab, transform);
-            Destroy(particle, 2.0f);
+            Destroy(particle.gameObject, 2.0f);
         }
 
         public void CookGood() {
