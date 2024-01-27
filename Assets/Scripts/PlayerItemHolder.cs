@@ -4,14 +4,12 @@ namespace KrakJam2024
 {
     public class PlayerItemHolder : MonoBehaviour
     {
-        private const string TAKE_ACTION = "Player/Take";
-
         [SerializeField] private Transform _holdHere;
         [SerializeField] private Item _currentHeldItem;
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _throwPowerMultiply = 100f;
+        [SerializeField] private Animator _animator;
         private PlayerView _playerView;
-        private bool _wasPressed;
 
         private Item _lastRegisteredItem;
 
@@ -24,13 +22,11 @@ namespace KrakJam2024
 
         public void RegisterItemOnGround(Item item)
         {
-            Debug.Log("Registerd");
             _lastRegisteredItem = item;
         }
 
         public void UnregisterItemOnGround(Item item)
         {
-            Debug.Log("UnRegisterd");
             _lastRegisteredItem = null;
         }
 
@@ -38,12 +34,14 @@ namespace KrakJam2024
         {
             if (_lastRegisteredItem != null && _currentHeldItem == null)
             {
+                _animator.SetBool("IsHoldingItem", true);
                 _lastRegisteredItem.Take();
                 _currentHeldItem = _lastRegisteredItem;
                 _lastRegisteredItem = null;
             }
             else if (_currentHeldItem != null)
             {
+                _animator.SetBool("IsHoldingItem", false);
                 _currentHeldItem.Throw(GetThrowVector().normalized * _throwPowerMultiply);
                 _currentHeldItem = null;
             }

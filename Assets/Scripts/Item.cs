@@ -1,11 +1,13 @@
 using UnityEngine;
 namespace KrakJam2024
 {
-    public class Item : MonoBehaviour
+    public abstract class Item : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _body;
 
-        private PlayerOwnerTransmitter _owner;
+        public PlayerOwnerTransmitter LastOwner { get; private set; }
+
+        public abstract void Use(PlayerOwnerTransmitter owner);
 
         public void Take()
         {
@@ -21,8 +23,6 @@ namespace KrakJam2024
             _body.angularVelocity = Random.Range(-360f, 360f);
         }
 
-        // public abstract void Use();
-
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_body.isKinematic)
@@ -30,7 +30,8 @@ namespace KrakJam2024
 
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                _owner = ownerTransmitter;
+                Debug.Log("nani");
+                LastOwner = ownerTransmitter;
                 ownerTransmitter.Player?.RegisterItemOnGround(this);
             }
         }
@@ -39,7 +40,6 @@ namespace KrakJam2024
         {
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                _owner = ownerTransmitter;
                 ownerTransmitter.Player?.UnregisterItemOnGround(this);
             }
         }
