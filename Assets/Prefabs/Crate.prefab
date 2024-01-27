@@ -206,3 +206,4 @@ MonoBehaviour:
   _body: {fileID: 4461380354782954294}
   _itemPrefabs:
   - {fileID: 4647427896967363013, guid: 9b86291455b104770a1151aea9aacc49, type: 3}
+  _crateDebrisPrefab: {fileID: 2174788682393661635, guid: ded9e1071566fe741823c9db4a1ff267, type: 3}
