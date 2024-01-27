@@ -36,11 +36,11 @@ namespace KrakJam2024
 
         private void FixedUpdate()
         {
-            if (Mathf.Abs(_movementRead) < Mathf.Epsilon)
-            {
-                _rigidbody.AddForce(new Vector2(_rigidbody.velocity.x * (-1f * _movementMultiply * Time.fixedDeltaTime), 0f));
-            }
-            else
+            // if (Mathf.Abs(_movementRead) < Mathf.Epsilon)
+            // {
+            //     _rigidbody.AddForce(new Vector2(_rigidbody.velocity.x * (-1f * _movementMultiply * Time.fixedDeltaTime), 0f));
+            // }
+            // else
             {
                 _rigidbody.AddForce(new Vector2(_movementRead * _movementMultiply * Time.fixedDeltaTime, 0f));
             }
