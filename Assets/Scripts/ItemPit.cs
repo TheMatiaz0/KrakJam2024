@@ -15,7 +15,7 @@ namespace KrakJam2024
             Debug.Log(other.gameObject);
             if (other.TryGetComponent<Item>(out var item))
             {
-                if (IsItemThrownByPlayer(item))
+                if (IsItemThrownByPlayer(item) && !item.Held)
                 {
                     _itemSystem.Do(item);
 

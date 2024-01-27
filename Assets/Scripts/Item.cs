@@ -25,6 +25,8 @@ namespace KrakJam2024
 
         public float Mass => _body.mass;
 
+        public bool Held => _body.isKinematic;
+
         public void Take()
         {
             _body.velocity = Vector2.zero;
