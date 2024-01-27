@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8247116357721009784}
   - component: {fileID: 7754668790033136634}
-  - component: {fileID: 2796049315897485886}
-  - component: {fileID: 7610175331218013178}
   m_Layer: 6
   m_Name: Circle
   m_TagString: Untagged
@@ -86,13 +84,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2796049315897485886
+--- !u!1 &5468414676658542539
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6977162279732537436}
+  - component: {fileID: 2428251985841951778}
+  - component: {fileID: 3455352703130245587}
+  m_Layer: 6
+  m_Name: Logic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6977162279732537436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5468414676658542539}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3366945883686737767}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2428251985841951778
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3311187507763077878}
+  m_GameObject: {fileID: 5468414676658542539}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -131,13 +162,13 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6017318, y: 1.371068}
   m_EdgeRadius: 0
---- !u!114 &7610175331218013178
+--- !u!114 &3455352703130245587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3311187507763077878}
+  m_GameObject: {fileID: 5468414676658542539}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57ab2187d136bdd4a976e57f7d800891, type: 3}
@@ -154,6 +185,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3366945883686737767}
   - component: {fileID: 5604794250601552908}
+  - component: {fileID: 5928562817932090742}
+  - component: {fileID: 6060526488353483436}
   m_Layer: 0
   m_Name: CatHead
   m_TagString: Untagged
@@ -175,6 +208,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8247116357721009784}
+  - {fileID: 6977162279732537436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5604794250601552908
@@ -191,3 +225,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _info: "Prefab odpowiedzialny za g\u0142ow\u0119 kota (emocje kota, wrzucanie do
     niej itemk\xF3w)"
+--- !u!95 &5928562817932090742
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894306687190254402}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6894b0e4995c2934290425fb47e055a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6060526488353483436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894306687190254402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a3420a60f6fd3e4190262285511c732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 5928562817932090742}
+  spriteRenderer: {fileID: 7754668790033136634}
+  stagesSprites:
+  - {fileID: 21300000, guid: 71b748d8e4d347e4e969de88bf574a96, type: 3}
+  - {fileID: 21300000, guid: 0d3311da8feb9884186d0d535e208c9a, type: 3}
+  - {fileID: 21300000, guid: 620c5043e6c2d494ca6526b567fb1cf5, type: 3}
+  - {fileID: 21300000, guid: e923c1a2fdde12143ac860243d5496b3, type: 3}
+  - {fileID: 21300000, guid: 97e2a50dd8221f24e97570bbdbbde3c8, type: 3}
+  badCookParticlePrefab: {fileID: 2629748736267123541, guid: d665efcc931d4db488b9b6ac2bf2f5b3, type: 3}
+  gudCookParticlePrefab: {fileID: 927574595096310057, guid: 47d9d1f0417beb944bd40652f04dae97, type: 3}
