@@ -1410,6 +1410,10 @@ PrefabInstance:
       propertyPath: _itemSystem
       value: 
       objectReference: {fileID: 93234508}
+    - target: {fileID: 6060526488353483436, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+      propertyPath: itemSystem
+      value: 
+      objectReference: {fileID: 93234508}
     - target: {fileID: 8894306687190254402, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
       propertyPath: m_Name
       value: CatHead

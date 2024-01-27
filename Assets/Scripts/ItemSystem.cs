@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,23 +7,36 @@ namespace KrakJam2024
 {
     public class ItemSystem : MonoBehaviour
     {
+        public event Action<float> OnHappinessUp = delegate { };
+        public event Action<float> OnHappinessDown = delegate { };
+
         [SerializeField]
         private float timeForCooldownedEffects = 4;
         [SerializeField]
         private PhysicsMaterial2D slipperyMaterial;
 
         private PhysicsMaterial2D cachedMaterial;
-        private float totalCatHappiness;
+        public float TotalCatHappiness = 50;
 
         public void Do(Item item)
         {
             StartCoroutine(RunThroughTypes(item));
 
-            totalCatHappiness += item.CatHappinessIncrease;
+            if (item.CatHappinessIncrease > 0)
+            {
+                OnHappinessUp?.Invoke(item.CatHappinessIncrease);
+            }
+            else if (item.CatHappinessIncrease < 0)
+            {
+                OnHappinessDown?.Invoke(item.CatHappinessIncrease);
+            }
+
+            TotalCatHappiness += item.CatHappinessIncrease;
         }
 
         private IEnumerator RunThroughTypes(Item item)
         {
+            // God forbid me for this crime 
             switch (item.ItemType)
             {
                 case ItemType.UpsideDown:
@@ -40,7 +54,7 @@ namespace KrakJam2024
                     break;
 
                 case ItemType.Catnip:
-                    Time.timeScale = 0.3f;
+                    Time.timeScale = 1.75f;
                     yield return new WaitForSeconds(timeForCooldownedEffects);
                     Time.timeScale = 1f;
                     break;

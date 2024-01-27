@@ -7,9 +7,32 @@ namespace KrakJam2024
         [SerializeField] private Animator animator;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Sprite[] stagesSprites;
+        [SerializeField] private ItemSystem itemSystem;
 
         [SerializeField] private ParticleSystem badCookParticlePrefab;
         [SerializeField] private ParticleSystem gudCookParticlePrefab;
+
+        private void Awake()
+        {
+            itemSystem.OnHappinessUp += ItemSystem_OnHappinessUp;
+            itemSystem.OnHappinessDown += ItemSystem_OnHappinessDown;
+        }
+
+        private void ItemSystem_OnHappinessUp(float addedValue)
+        {
+            CookGood();
+        }
+
+        private void ItemSystem_OnHappinessDown(float addedValue)
+        {
+            CookBad();
+        }
+
+        private void OnDestroy()
+        {
+            itemSystem.OnHappinessUp -= ItemSystem_OnHappinessUp;
+            itemSystem.OnHappinessDown -= ItemSystem_OnHappinessDown;
+        }
 
         public void Update()
         {
@@ -40,7 +63,7 @@ namespace KrakJam2024
         {
             animator.SetTrigger("LetHimCook");
             var particle = Instantiate(good ? gudCookParticlePrefab : badCookParticlePrefab, transform);
-            Destroy(particle.gameObject, 2.0f);
+            Destroy(particle, 2.0f);
         }
 
         public void CookGood() {
