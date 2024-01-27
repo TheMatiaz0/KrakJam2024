@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 775317503765838066}
   - component: {fileID: 7262182787737673530}
-  - component: {fileID: 6054636768901719897}
   - component: {fileID: 2403279807417661005}
   - component: {fileID: 1710948127724466880}
-  - component: {fileID: 4507505417393145863}
+  - component: {fileID: 2263903055421286714}
   m_Layer: 0
   m_Name: Item
   m_TagString: Untagged
@@ -77,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -89,19 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6054636768901719897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2171101094156118462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ad6df31e3f4ce0b8e673d1e3c59d2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _body: {fileID: 2403279807417661005}
 --- !u!50 &2403279807417661005
 Rigidbody2D:
   serializedVersion: 4
@@ -118,7 +104,7 @@ Rigidbody2D:
   m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 60abe3e0e6f014cfdb204d6225858370, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -127,7 +113,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &1710948127724466880
 BoxCollider2D:
@@ -174,7 +160,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4507505417393145863
+--- !u!114 &2263903055421286714
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -183,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2171101094156118462}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ad6df31e3f4ce0b8e673d1e3c59d2b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a4e358478a05bf4781272e03fb93353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 2403279807417661005}
