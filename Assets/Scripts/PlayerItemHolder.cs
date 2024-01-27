@@ -4,16 +4,29 @@ namespace KrakJam2024
 {
     public class PlayerItemHolder : MonoBehaviour
     {
+        private const string TAKE_ACTION = "Player/Take";
+        [Header("Throwing config")]
+        [SerializeField] private float _throwPowerMin;
+        [SerializeField] private float _throwPowerMax;
+        [SerializeField] private float _powerPlusPerSecond;
+        [SerializeField] private Transform _leftThrow, _rightThrow;
+
+        private float _currentPower;
+        public float CurrentPower01 => Mathf.InverseLerp(_throwPowerMin, _throwPowerMax, _currentPower);
+        public bool CanThrow => _canThrow;
+        public Transform ThrowTarget => _playerView.LastDirection < 0f ? _leftThrow : _rightThrow;
+
+        [Space]
         [SerializeField] private Transform _holdHere;
         [SerializeField] private Item _currentHeldItem;
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _throwPowerMultiply = 100f;
         [SerializeField] private Animator _animator;
         private PlayerView _playerView;
+        private bool _takenThisFrame;
+        private bool _canThrow;
 
         private Item _lastRegisteredItem;
-
-        [SerializeField] private Transform _leftThrow, _rightThrow;
 
         private void Awake()
         {
@@ -38,13 +51,14 @@ namespace KrakJam2024
                 _lastRegisteredItem.Take();
                 _currentHeldItem = _lastRegisteredItem;
                 _lastRegisteredItem = null;
+                _takenThisFrame = true;
             }
-            else if (_currentHeldItem != null)
-            {
-                _animator.SetBool("IsHoldingItem", false);
-                _currentHeldItem.Throw(GetThrowVector().normalized * _throwPowerMultiply);
-                _currentHeldItem = null;
-            }
+            // else if (_currentHeldItem != null)
+            // {
+            //     _animator.SetBool("IsHoldingItem", false);
+            //     _currentHeldItem.Throw(GetThrowVector().normalized * _throwPowerMultiply);
+            //     _currentHeldItem = null;
+            // }
         }
 
         private void FixedUpdate()
@@ -52,13 +66,39 @@ namespace KrakJam2024
             if (_currentHeldItem != null)
             {
                 _currentHeldItem.MoveTo(_holdHere);
+                if (_takenThisFrame)
+                {
+                    _takenThisFrame = false;
+                    return;
+                }
+
+                if (_canThrow)
+                {
+                    if (_input.actions[TAKE_ACTION].WasReleasedThisFrame())
+                    {
+                        _currentHeldItem.Throw(GetThrowVector().normalized * _currentPower);
+                        RegisterItemOnGround(_currentHeldItem);
+                        _currentHeldItem = null;
+                        _canThrow = false;
+                    }
+                    else
+                    {
+                        _currentPower += _powerPlusPerSecond * Time.fixedDeltaTime;
+                        _currentPower = Mathf.Min(_currentPower, _throwPowerMax);
+                    }
+                }
+
+                if (_input.actions[TAKE_ACTION].WasPressedThisFrame())
+                {
+                    _canThrow = true;
+                    _currentPower = _throwPowerMin;
+                }
             }
         }
 
         private Vector2 GetThrowVector()
         {
-            var direction = _playerView.LastDirection < 0f? _leftThrow : _rightThrow;
-            return direction.position - _holdHere.position;
+            return ThrowTarget.position - _holdHere.position;
         }
     }
 }

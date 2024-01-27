@@ -10,6 +10,7 @@ namespace KrakJam2024
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _movementMultiply;
         [SerializeField] private float _movementRead;
+        [SerializeField] private Animator _animator;
 
         private PlayerView _view;
 
@@ -36,11 +37,11 @@ namespace KrakJam2024
 
         private void FixedUpdate()
         {
-            if (Mathf.Abs(_movementRead) < Mathf.Epsilon)
-            {
-                _rigidbody.AddForce(new Vector2(_rigidbody.velocity.x * (-1f * _movementMultiply * Time.fixedDeltaTime), 0f));
-            }
-            else
+            // if (Mathf.Abs(_movementRead) < Mathf.Epsilon)
+            // {
+            //     _rigidbody.AddForce(new Vector2(_rigidbody.velocity.x * (-1f * _movementMultiply * Time.fixedDeltaTime), 0f));
+            // }
+            // else
             {
                 _rigidbody.AddForce(new Vector2(_movementRead * _movementMultiply * Time.fixedDeltaTime, 0f));
             }
@@ -48,6 +49,7 @@ namespace KrakJam2024
 
         private void UpdateView(float movement)
         {
+            _animator.SetBool("IsWalking", movement != 0);
             _view.Look(movement);
         }
     }

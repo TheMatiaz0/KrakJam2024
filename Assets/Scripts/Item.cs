@@ -58,6 +58,7 @@ namespace KrakJam2024
                 ownerTransmitter.Player?.UnregisterItemOnGround(this);
             }
         }
+        
         public void MoveTo(Transform holdHere)
         {
             _body.MovePosition(holdHere.position);
