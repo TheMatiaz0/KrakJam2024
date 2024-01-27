@@ -19,7 +19,7 @@ namespace KrakJam2024
         [SerializeField] private float _catHappinessIncrease;
         [SerializeField] private ItemType _itemType;
 
-        public PlayerOwnerTransmitter LastOwner { get; private set; }
+        public PlayerOwnerTransmitter LastOwner { get; set; }
         public float CatHappinessIncrease => _catHappinessIncrease;
         public ItemType ItemType => _itemType;
 
