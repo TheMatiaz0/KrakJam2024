@@ -11,6 +11,13 @@ namespace KrakJam2024
         [SerializeField] private float _movementMultiply;
         [SerializeField] private float _movementRead;
 
+        private PlayerView _view;
+
+        private void Awake()
+        {
+            _view = GetComponentInChildren<PlayerView>();
+        }
+
         private void OnEnable()
         {
             _input.actions[PLAYER_MOVE].Enable();
@@ -24,6 +31,7 @@ namespace KrakJam2024
         private void Update()
         {
             _movementRead = _input.actions[PLAYER_MOVE].ReadValue<float>();
+            UpdateView(_movementRead);
         }
 
         private void FixedUpdate()
@@ -36,6 +44,11 @@ namespace KrakJam2024
             {
                 _rigidbody.AddForce(new Vector2(_movementRead * _movementMultiply * Time.fixedDeltaTime, 0f));
             }
+        }
+
+        private void UpdateView(float movement)
+        {
+            _view.Look(movement);
         }
     }
 }
