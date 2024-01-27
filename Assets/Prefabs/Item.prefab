@@ -174,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 2403279807417661005}
   _catHappinessIncrease: 20
-  _itemType: 1
+  _itemType: 0
 --- !u!1 &7582436295593331519
 GameObject:
   m_ObjectHideFlags: 0
