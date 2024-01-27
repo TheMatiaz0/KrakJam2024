@@ -13,35 +13,35 @@ namespace KrakJam2024
 
         public void Do(Item item)
         {
-            switch (item.ItemType)
+            StartCoroutine(RunThroughTypes(item.ItemType));
+
+            totalCatHappiness += item.CatHappinessIncrease;
+        }
+
+        private IEnumerator RunThroughTypes(ItemType type)
+        {
+            switch (type)
             {
                 case ItemType.UpsideDown:
                     Camera.main.transform.Rotate(0, 0, 180);
+                    yield return new WaitForSeconds(timeForCooldownedEffects);
+                    Camera.main.transform.Rotate(0, 0, 180);
                     break;
+
                 case ItemType.IceRink:
                     // ...
                     break;
 
                 case ItemType.Catnip:
                     Time.timeScale = 0.5f;
+                    yield return new WaitForSeconds(timeForCooldownedEffects);
+                    Time.timeScale = 1f;
+                    break;
+
+                case ItemType.Llama:
                     break;
 
                 default: break;
-            }
-
-            StartCoroutine(RunCooldownedEffect(item));
-            totalCatHappiness += item.CatHappinessIncrease;
-        }
-
-        private IEnumerator RunCooldownedEffect(Item item)
-        {
-            if (item.IsCooldownedEffect)
-            {
-                yield return new WaitForSeconds(timeForCooldownedEffects);
-            }
-            else
-            {
-                // .. wait for animation to finish
             }
         }
     }
