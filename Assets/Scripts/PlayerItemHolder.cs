@@ -64,6 +64,20 @@ namespace KrakJam2024
             // }
         }
 
+        private void ThrowHeldItem()
+        {
+            if(_currentHeldItem == null)
+            {
+                return;
+            }
+
+            _currentHeldItem.Throw(GetThrowVector() * _currentPower);
+            UnregisterItemOnGround(_currentHeldItem);
+            _currentHeldItem = null;
+            _canThrow = false;
+            _animator.SetBool("IsHoldingItem", false);
+        }
+
         private void FixedUpdate()
         {
             if (_currentHeldItem != null)
@@ -79,11 +93,7 @@ namespace KrakJam2024
                 {
                     if (_input.actions[TAKE_ACTION].WasReleasedThisFrame())
                     {
-                        _currentHeldItem.Throw(GetThrowVector() * _currentPower);
-                        RegisterItemOnGround(_currentHeldItem);
-                        _currentHeldItem = null;
-                        _canThrow = false;
-                        _animator.SetBool("IsHoldingItem", false);
+                        ThrowHeldItem();
                     }
                     else
                     {
