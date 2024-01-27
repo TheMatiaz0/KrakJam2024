@@ -12,6 +12,8 @@ namespace KrakJam2024
         [SerializeField] private LayerMask _catchLayerMask;
         [SerializeField] private Rigidbody2D _hookBody;
 
+        [SerializeField] private Animator _anim;
+
         private void OnEnable()
         {
             _input.actions[CATCH_ACTION].Enable();
@@ -35,6 +37,7 @@ namespace KrakJam2024
                     _holdItem.transform.SetParent(_catchPoint);
                     _holdItem.Take();
                     _holdItem.LastOwner = null;
+                    _anim.SetBool("Hold", true);
                 }
                 else
                 {
@@ -46,6 +49,7 @@ namespace KrakJam2024
             {
                 if (_holdItem)
                 {
+                    _anim.SetBool("Hold", false);
                     _holdItem.transform.SetParent(null);
                     _holdItem.Throw(_hookBody.velocity);
                     _holdItem = null;
