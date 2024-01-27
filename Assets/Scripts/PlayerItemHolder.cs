@@ -11,6 +11,7 @@ namespace KrakJam2024
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _throwPowerMultiply = 100f;
         private PlayerView _playerView;
+        private bool _wasPressed;
 
         private Item _lastRegisteredItem;
 
@@ -33,21 +34,24 @@ namespace KrakJam2024
             _lastRegisteredItem = null;
         }
 
-        private void FixedUpdate()
+        private void OnTake()
         {
-            if (_input.actions[TAKE_ACTION].WasPressedThisFrame() && _lastRegisteredItem != null && _currentHeldItem == null)
+            if (_lastRegisteredItem != null && _currentHeldItem == null)
             {
                 _lastRegisteredItem.Take();
                 _currentHeldItem = _lastRegisteredItem;
                 _lastRegisteredItem = null;
             }
-            else if (_input.actions[TAKE_ACTION].WasPressedThisFrame() && _currentHeldItem != null)
+            else if (_currentHeldItem != null)
             {
                 _currentHeldItem.Throw(GetThrowVector().normalized * _throwPowerMultiply);
                 _currentHeldItem = null;
             }
+        }
 
-            if (_currentHeldItem)
+        private void FixedUpdate()
+        {
+            if (_currentHeldItem != null)
             {
                 _currentHeldItem.MoveTo(_holdHere);
             }

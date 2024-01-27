@@ -28,9 +28,9 @@ namespace KrakJam2024
             _input.actions[PLAYER_MOVE].Disable();
         }
 
-        private void Update()
+        private void OnWalk(InputValue value)
         {
-            _movementRead = _input.actions[PLAYER_MOVE].ReadValue<float>();
+            _movementRead = value.Get<float>();
             UpdateView(_movementRead);
         }
 
