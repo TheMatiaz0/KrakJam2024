@@ -12,9 +12,12 @@ namespace KrakJam2024
         [SerializeField] private Transform _leftThrow, _rightThrow;
 
         private float _currentPower;
-        public float CurrentPower01 => Mathf.InverseLerp(_throwPowerMin, _throwPowerMax, _currentPower);
+        public float CurrentPowerForIndicator => Mathf.InverseLerp(_throwPowerMin, _throwPowerMax, _currentPower);
+        public float CurrentPower => _currentPower;
         public bool CanThrow => _canThrow;
         public Transform ThrowTarget => _playerView.LastDirection < 0f ? _leftThrow : _rightThrow;
+        public Vector3 ThrowDirection => GetThrowVector();
+        public Item HeldItem => _currentHeldItem;
 
         [Space]
         [SerializeField] private Transform _holdHere;
@@ -76,7 +79,7 @@ namespace KrakJam2024
                 {
                     if (_input.actions[TAKE_ACTION].WasReleasedThisFrame())
                     {
-                        _currentHeldItem.Throw(GetThrowVector().normalized * _currentPower);
+                        _currentHeldItem.Throw(GetThrowVector() * _currentPower);
                         RegisterItemOnGround(_currentHeldItem);
                         _currentHeldItem = null;
                         _canThrow = false;
@@ -99,7 +102,7 @@ namespace KrakJam2024
 
         private Vector2 GetThrowVector()
         {
-            return ThrowTarget.position - _holdHere.position;
+            return (ThrowTarget.position - _holdHere.position).normalized;
         }
     }
 }
