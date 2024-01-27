@@ -48,7 +48,7 @@ namespace KrakJam2024
             var points = new List<Vector3>();
 
             var position = transform.position;
-            var throwVel = _itemHolder.ThrowDirection * _itemHolder.CurrentPower * _itemHolder.HeldItem.Mass;
+            var throwVel = _itemHolder.ThrowDirection * _itemHolder.CurrentPower / _itemHolder.HeldItem.Mass;
 
             const int maxIterations = 60;
             const float simplifiedDeltaTime = 0.1f; // to minimize calculations
