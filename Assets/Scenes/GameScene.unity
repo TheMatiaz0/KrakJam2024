@@ -615,17 +615,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4660740375699190401, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
-      propertyPath: m_SleepingMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5694702975692716701, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_Name
       value: Winch
-      objectReference: {fileID: 0}
-    - target: {fileID: 7366455937892184173, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
-      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
-      value: 0.30434608
       objectReference: {fileID: 0}
     - target: {fileID: 7560940221958056922, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -665,14 +657,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7560940221958056922, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7950041974479656567, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
-      propertyPath: m_SleepingMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9080682474019144390, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
-      propertyPath: m_SleepingMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
