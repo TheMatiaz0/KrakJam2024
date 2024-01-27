@@ -6,7 +6,7 @@ namespace KrakJam2024
     {
         private const string CATCH_ACTION = "Wench/Catch";
 
-        [SerializeField] private Item _holdItem;
+        [SerializeField] private Crate _holdCrate;
         [SerializeField] private PlayerInput _input;
         [SerializeField] private Transform _catchPoint;
         [SerializeField] private LayerMask _catchLayerMask;
@@ -27,32 +27,33 @@ namespace KrakJam2024
         {
             if (_input.actions[CATCH_ACTION].WasPressedThisFrame())
             {
-                Debug.Log("CATCH ACTION)");
                 var itemCollider = Physics2D.OverlapCircle(_catchPoint.position, .33f, _catchLayerMask);
 
-                if (itemCollider != null && itemCollider.GetComponentInParent<Item>())
+                if (itemCollider != null && itemCollider.GetComponentInParent<Crate>())
                 {
-                    var item = itemCollider.GetComponentInParent<Item>();
-                    _holdItem = item;
-                    _holdItem.transform.SetParent(_catchPoint);
-                    _holdItem.Take();
-                    _holdItem.LastOwner = null;
+                    Debug.Log("Fount collider");
+                    
+                    _holdCrate = itemCollider.GetComponentInParent<Crate>();
+                    _holdCrate.transform.SetParent(_catchPoint);
+                    _holdCrate.Take();
+                    _holdCrate.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     _anim.SetBool("Hold", true);
                 }
                 else
                 {
-                    Debug.Log("NO ITEM");
+                    Debug.Log("NO CRATE");
                 }
 
             }
             if (_input.actions[CATCH_ACTION].WasReleasedThisFrame())
             {
-                if (_holdItem)
+                if (_holdCrate)
                 {
                     _anim.SetBool("Hold", false);
-                    _holdItem.transform.SetParent(null);
-                    _holdItem.Throw(_hookBody.velocity);
-                    _holdItem = null;
+                    _holdCrate.transform.SetParent(null);
+                    Debug.Log("hookbody velocity" + _hookBody.velocity);
+                    _holdCrate.Throw(_hookBody.velocity);
+                    _holdCrate = null;
                 }
             }
         }
