@@ -7,6 +7,8 @@ namespace KrakJam2024
 
         public void Take()
         {
+            _body.velocity = Vector2.zero;
+            _body.angularVelocity = 0f;
             _body.isKinematic = true;
         }
 
