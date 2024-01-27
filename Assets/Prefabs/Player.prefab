@@ -232,7 +232,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2264397201659489739
 Transform:
   m_ObjectHideFlags: 0
@@ -606,6 +606,7 @@ MonoBehaviour:
   _input: {fileID: 1741555043695581063}
   _movementMultiply: 500
   _movementRead: 0
+  _animator: {fileID: 7726529499971539147}
 --- !u!114 &3696818604976438573
 MonoBehaviour:
   m_ObjectHideFlags: 0

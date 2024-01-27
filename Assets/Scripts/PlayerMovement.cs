@@ -10,6 +10,7 @@ namespace KrakJam2024
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _movementMultiply;
         [SerializeField] private float _movementRead;
+        [SerializeField] private Animator _animator;
 
         private PlayerView _view;
 
@@ -48,6 +49,7 @@ namespace KrakJam2024
 
         private void UpdateView(float movement)
         {
+            _animator.SetBool("IsWalking", movement != 0);
             _view.Look(movement);
         }
     }
