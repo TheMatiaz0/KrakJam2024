@@ -1054,12 +1054,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8495640bfc4cbc80c99dad6006e224, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _holdItem: {fileID: 0}
+  _holdCrate: {fileID: 0}
   _input: {fileID: 4510955375701731185}
   _catchPoint: {fileID: 242188747059331863}
   _catchLayerMask:
     serializedVersion: 2
-    m_Bits: 193
+    m_Bits: 256
   _hookBody: {fileID: 7950041974479656567}
   _anim: {fileID: 2652229862631905186}
 --- !u!1001 &6056618576150249882
