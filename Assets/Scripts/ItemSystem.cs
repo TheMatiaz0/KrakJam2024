@@ -26,6 +26,11 @@ namespace KrakJam2024
         private PhysicsMaterial2D cachedMaterial;
 
         private float _totalCatHappiness;
+
+        public float StartHappiness => _startCatHappiness;
+        public float GameOverHappiness => _gameOverCatHappiness;
+        public float WinHappiness => _winCatHappiness;
+
         public float TotalCatHappiness 
         {
             get => _totalCatHappiness;
