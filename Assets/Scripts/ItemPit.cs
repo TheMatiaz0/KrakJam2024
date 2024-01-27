@@ -7,6 +7,9 @@ namespace KrakJam2024
 {
     public class ItemPit : MonoBehaviour
     {
+        [SerializeField]
+        private ItemSystem _itemSystem;
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             Debug.Log(other.gameObject);
@@ -14,9 +17,9 @@ namespace KrakJam2024
             {
                 if (IsItemThrownByPlayer(item))
                 {
+                    _itemSystem.Do(item);
+
                     // var playerGO = item.Owner.Player.gameObject;
-                    Debug.Log("test 1");
-                    item.Use(item.LastOwner);
                     Destroy(item.gameObject);
                 }
             }
