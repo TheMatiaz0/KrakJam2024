@@ -18,12 +18,10 @@ namespace KrakJam2024
         [SerializeField] private Rigidbody2D _body;
         [SerializeField] private float _catHappinessIncrease;
         [SerializeField] private ItemType _itemType;
-        [SerializeField] private bool _isCooldownedEffect = true;
 
         public PlayerOwnerTransmitter LastOwner { get; private set; }
         public float CatHappinessIncrease => _catHappinessIncrease;
         public ItemType ItemType => _itemType;
-        public bool IsCooldownedEffect => _isCooldownedEffect;
 
         public void Take()
         {
