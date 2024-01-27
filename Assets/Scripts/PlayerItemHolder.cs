@@ -37,12 +37,12 @@ namespace KrakJam2024
             _playerView = GetComponentInChildren<PlayerView>();
         }
 
-        public void RegisterItemOnGround(Item item)
+        public void RegisterGrabbedItem(Item item)
         {
             _lastRegisteredItem = item;
         }
 
-        public void UnregisterItemOnGround(Item item)
+        public void UnregisterGrabbedItem(Item item)
         {
             _lastRegisteredItem = null;
         }
@@ -74,7 +74,7 @@ namespace KrakJam2024
 
             _currentHeldItem.MoveTo(_holdHere);
             _currentHeldItem.Throw(GetThrowVector() * _currentPower);
-            UnregisterItemOnGround(_currentHeldItem);
+            UnregisterGrabbedItem(_currentHeldItem);
             _currentHeldItem = null;
             _canThrow = false;
             _animator.SetBool("IsHoldingItem", false);

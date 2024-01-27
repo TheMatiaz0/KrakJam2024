@@ -47,7 +47,7 @@ namespace KrakJam2024
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
                 LastOwner = ownerTransmitter;
-                ownerTransmitter.Player?.RegisterItemOnGround(this);
+                ownerTransmitter.Player?.RegisterGrabbedItem(this);
             }
         }
 
@@ -55,7 +55,7 @@ namespace KrakJam2024
         {
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                ownerTransmitter.Player?.UnregisterItemOnGround(this);
+                ownerTransmitter.Player?.UnregisterGrabbedItem(this);
             }
         }
         
