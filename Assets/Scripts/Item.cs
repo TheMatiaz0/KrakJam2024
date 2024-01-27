@@ -1,13 +1,29 @@
 using UnityEngine;
 namespace KrakJam2024
 {
-    public abstract class Item : MonoBehaviour
+
+    public enum ItemType
+    {
+        UpsideDown,
+        IceRink,
+        Llama,
+        Glitter,
+        BlackAndWhite,
+        Flood,
+        Catnip
+    }
+
+    public class Item : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _body;
+        [SerializeField] private float _catHappinessIncrease;
+        [SerializeField] private ItemType _itemType;
+        [SerializeField] private bool _isCooldownedEffect = true;
 
         public PlayerOwnerTransmitter LastOwner { get; private set; }
-
-        public abstract void Use(PlayerOwnerTransmitter owner);
+        public float CatHappinessIncrease => _catHappinessIncrease;
+        public ItemType ItemType => _itemType;
+        public bool IsCooldownedEffect => _isCooldownedEffect;
 
         public void Take()
         {
@@ -30,7 +46,6 @@ namespace KrakJam2024
 
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                Debug.Log("nani");
                 LastOwner = ownerTransmitter;
                 ownerTransmitter.Player?.RegisterItemOnGround(this);
             }
