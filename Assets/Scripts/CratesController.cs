@@ -6,12 +6,17 @@ namespace KrakJam2024
     {
         [SerializeField] private GameObject _prefab;
         [SerializeField] private Transform _spawnPoint;
+        [Header("Spawning properties")]
         [SerializeField] private float _speedPerSecond;
         [SerializeField] private float _spawnFreqMin;
         [SerializeField] private float _spawnFreqMax;
+        [Header("Path properties")]
+        [SerializeField] private float verticalWiggleSpeed;
+        [SerializeField] private float verticalWiggleScale;
+        [SerializeField] private float rotationSpeed;
 
         private float _toNextSpawn;
-        private List<Transform> _registered = new();
+        private Dictionary<Transform, float> _registered = new();
 
         public void Unregister(Transform go)
         {
@@ -20,9 +25,13 @@ namespace KrakJam2024
 
         private void Update()
         {
-            foreach (var t in _registered)
+            foreach ((var t, var createTime) in _registered)
             {
-                t.position += new Vector3(_speedPerSecond * Time.deltaTime, Mathf.Sin(Time.time * 3f) * Time.deltaTime, 0);
+                float liveTime = Time.time - createTime;
+                float yOffset = Mathf.Sin(liveTime * verticalWiggleSpeed) * Time.deltaTime * verticalWiggleScale;
+                t.position += new Vector3(_speedPerSecond * Time.deltaTime, yOffset, 0);
+
+                t.rotation *= Quaternion.Euler(0, 0, rotationSpeed * Time.deltaTime);
             }
 
             if (_toNextSpawn <= 0)
@@ -43,7 +52,7 @@ namespace KrakJam2024
         {
             var go = Instantiate(_prefab, _spawnPoint.position, Quaternion.identity);
             go.GetComponent<Crate>().SetController(this);
-            _registered.Add(go.transform);
+            _registered[go.transform] = Time.time;
         }
     }
 }
