@@ -22,7 +22,7 @@ namespace KrakJam2024
         {
             foreach (var t in _registered)
             {
-                t.position += new Vector3(_speedPerSecond * Time.deltaTime, 0, 0);
+                t.position += new Vector3(_speedPerSecond * Time.deltaTime, Mathf.Sin(Time.time * 3f) * Time.deltaTime, 0);
             }
 
             if (_toNextSpawn <= 0)
