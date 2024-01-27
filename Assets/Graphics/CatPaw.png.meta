@@ -114,17 +114,17 @@ TextureImporter:
     bones:
     - name: bone_1
       guid: d53c885b86bc6a244859bf18c7da188b
-      position: {x: 662.0456, y: 567.9105, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5804101, w: 0.8143244}
-      length: 307.4794
+      position: {x: 611.5169, y: 568.8821, z: 0}
+      rotation: {x: 0, y: 0, z: -0.5198908, w: 0.8542327}
+      length: 328.32892
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: bone_2
       guid: 95232b17f350e0c49b1b6c3f36075078
-      position: {x: 307.47943, y: 0.000039365223, z: 0}
-      rotation: {x: 0, y: 0, z: -0.5181899, w: 0.8552657}
+      position: {x: 328.32892, y: 0.000014820529, z: 0}
+      rotation: {x: 0, y: 0, z: -0.57878923, w: 0.81547725}
       length: 295.07196
       parentId: 0
       color:
@@ -132,17 +132,17 @@ TextureImporter:
         rgba: 4278255615
     - name: bone_3
       guid: e51057204c100b94ea313f7f474b081a
-      position: {x: 525.52527, y: 538.0297, z: 0}
-      rotation: {x: 0, y: 0, z: -0.9999629, w: 0.008619634}
-      length: 360.36237
+      position: {x: 532.2137, y: 593.7659, z: 0}
+      rotation: {x: 0, y: 0, z: -0.99650663, w: 0.083513595}
+      length: 372.18948
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278255360
     - name: bone_4
       guid: b72a8f680dd15694192786a9defdb31b
-      position: {x: 360.36243, y: 0.0000997996, z: 0}
-      rotation: {x: 0, y: 0, z: 0.75132954, w: 0.6599273}
+      position: {x: 372.18948, y: 0.00006886889, z: 0}
+      rotation: {x: 0, y: 0, z: 0.6997755, w: 0.7143628}
       length: 467.8283
       parentId: 2
       color:
@@ -413,7 +413,7 @@ TextureImporter:
       boneIndex[2]: 0
       boneIndex[3]: 0
     - weight[0]: 0.6559362
-      weight[1]: 0.34406385
+      weight[1]: 0.34406382
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
@@ -436,7 +436,7 @@ TextureImporter:
       boneIndex[1]: 1
       boneIndex[2]: 0
       boneIndex[3]: 0
-    - weight[0]: 0.6050015
+    - weight[0]: 0.60500145
       weight[1]: 0.39499855
       weight[2]: 0
       weight[3]: 0
@@ -516,7 +516,7 @@ TextureImporter:
       boneIndex[1]: 0
       boneIndex[2]: 0
       boneIndex[3]: 0
-    - weight[0]: 0.6589524
+    - weight[0]: 0.6589525
       weight[1]: 0.34104756
       weight[2]: 0
       weight[3]: 0
@@ -525,7 +525,7 @@ TextureImporter:
       boneIndex[2]: 0
       boneIndex[3]: 0
     - weight[0]: 0.90796983
-      weight[1]: 0.09203018
+      weight[1]: 0.09203017
       weight[2]: 0
       weight[3]: 0
       boneIndex[0]: 0
