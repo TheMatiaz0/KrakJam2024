@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeForCooldownedEffects: 3
+  slipperyMaterial: {fileID: 6200000, guid: f77922abb8dad9646a5aa6537ec434db, type: 2}
