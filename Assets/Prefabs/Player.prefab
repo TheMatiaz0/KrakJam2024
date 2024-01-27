@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7790448966467711773}
   - component: {fileID: 7404469113066641407}
+  - component: {fileID: 3083525735083493265}
   m_Layer: 7
   m_Name: InteractionTrigger
   m_TagString: Untagged
@@ -257,6 +258,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.953621, y: 2.2434697}
   m_EdgeRadius: 0
+--- !u!114 &3083525735083493265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093331612246798770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94f74e40f32c2348af826e8e27874a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 5201588149038290854}
 --- !u!1 &8013840283251332635
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ namespace KrakJam2024
     {
         [SerializeField] private Rigidbody2D _body;
 
+        private PlayerOwnerTransmitter _owner;
+
         public void Take()
         {
             _body.velocity = Vector2.zero;
@@ -19,22 +21,26 @@ namespace KrakJam2024
             _body.angularVelocity = Random.Range(-360f, 360f);
         }
 
+        // public abstract void Use();
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (_body.isKinematic)
                 return;
 
-            if (other.CompareTag("Player"))
+            if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                other.GetComponent<PlayerItemHolder>()?.RegisterItemOnGround(this);
+                _owner = ownerTransmitter;
+                ownerTransmitter.Player?.RegisterItemOnGround(this);
             }
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                other.GetComponent<PlayerItemHolder>()?.UnregisterItemOnGround(this);
+                _owner = ownerTransmitter;
+                ownerTransmitter.Player?.UnregisterItemOnGround(this);
             }
         }
         public void MoveTo(Transform holdHere)
