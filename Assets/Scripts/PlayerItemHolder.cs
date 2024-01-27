@@ -77,6 +77,7 @@ namespace KrakJam2024
                     if (_input.actions[TAKE_ACTION].WasReleasedThisFrame())
                     {
                         _currentHeldItem.Throw(GetThrowVector().normalized * _currentPower);
+                        RegisterItemOnGround(_currentHeldItem);
                         _currentHeldItem = null;
                         _canThrow = false;
                     }
