@@ -2683,6 +2683,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 242188747059331863, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 242188747059331863, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.08
+      objectReference: {fileID: 0}
     - target: {fileID: 5694702975692716701, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_Name
       value: Winch
