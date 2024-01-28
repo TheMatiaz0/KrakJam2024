@@ -172,6 +172,9 @@ namespace KrakJam2024
         {
             spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
             spinFlipMaterial.SetFloat("_Spiral_Multiplier", 0.0f);
+
+            flashBangMaterial.SetFloat("_Contrast", 0.0f);
+
             Time.timeScale = 1;
         }
     }
