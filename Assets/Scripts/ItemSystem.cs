@@ -188,10 +188,21 @@ namespace KrakJam2024
 
         private IEnumerator EnableBlackAndWhite()
         {
+            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(0.3f);
+            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
             _blackAndWhite.SetInt("_Enabled", 1);
-            _volumeProfile.GetComponent<FilmGrain>().active = true;
+            if(_volumeProfile.TryGet(out FilmGrain filmGrain))
+            {
+                filmGrain.active = true;
+            }
+
             yield return new WaitForSeconds(10f);
-            _volumeProfile.GetComponent<FilmGrain>().active = false;
+
+            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(0.3f);
+            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            filmGrain.active = false;
             _blackAndWhite.SetInt("_Enabled", 0);
         }
 
@@ -212,7 +223,10 @@ namespace KrakJam2024
 
             Time.timeScale = 1;
 
-            _volumeProfile.GetComponent<FilmGrain>().active = false;
+            if(_volumeProfile.TryGet(out FilmGrain filmGrain))
+            {
+                filmGrain.active = false;
+            }
         }
     }
 }
