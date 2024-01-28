@@ -12,6 +12,9 @@ namespace KrakJam2024
         [SerializeField] private Vector3 _changedPos;
         [SerializeField] private Vector3 _originalPos;
 
+        [SerializeField] private Transform _pokrywka;
+        [SerializeField] private GameObject _logic;
+
         [Button]
         public void Run() => Run(15f);
 
@@ -50,9 +53,20 @@ namespace KrakJam2024
             _timeToDisable -= Time.deltaTime;
         }
         
+        [Button]
         public void Paprika()
         {
-            
+            _pokrywka.GetComponent<Collider2D>().enabled = true;
+            _pokrywka.DOScale(Vector3.one * .4f, .12f);
+            _logic.SetActive(false);
+            Invoke(nameof(FinishPaprika), 8f);
+        }
+
+        private void FinishPaprika()
+        {
+            _pokrywka.GetComponent<Collider2D>().enabled = false;
+            _pokrywka.DOScale(Vector3.zero, .12f);
+            _logic.SetActive(true);
         }
     }
 }

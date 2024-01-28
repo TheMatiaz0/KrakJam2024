@@ -87,7 +87,8 @@ namespace KrakJam2024
             // audioSource.PlayOneShot(good ? goodSound : badSound);
 
             animator.SetTrigger("LetHimCook");
-            var particle = Instantiate(good ? gudCookParticlePrefab : badCookParticlePrefab, transform);
+            var particlePrefab = good ? gudCookParticlePrefab : badCookParticlePrefab;
+            var particle = Instantiate(particlePrefab, transform.position - new Vector3(0, 3.6f, 1.0f), particlePrefab.transform.rotation);
             Destroy(particle, 2.0f);
         }
 
