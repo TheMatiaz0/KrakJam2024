@@ -62,7 +62,7 @@ namespace KrakJam2024
         private void ShowWool()
         {
             _wool.transform.localScale = Vector3.zero;
-            _wool.transform.DOScale(Vector3.one * 2.5f, .12f);
+            _wool.transform.DOScale(Vector3.one * .2f, .12f);
         }
 
         private void HideWool() { _wool.transform.DOScale(Vector3.one * 0f, .12f); }
