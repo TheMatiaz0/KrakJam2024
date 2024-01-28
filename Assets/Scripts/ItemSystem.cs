@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace KrakJam2024
         private float _winCatHappiness = 100;
         [SerializeField]
         private GameManager _gameManager;
+        [SerializeField]
+        private Material spinFlipMaterial;
 
         private PhysicsMaterial2D cachedMaterial;
 
@@ -87,9 +90,22 @@ namespace KrakJam2024
             switch (item.ItemType)
             {
                 case ItemType.UpsideDown:
-                    Camera.main.transform.Rotate(0, 0, 180);
+                    yield return new WaitForSeconds(1.0f);
+
+                    spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+                    yield return new WaitForSeconds(0.3f);
+                    spinFlipMaterial.SetInt("_FlipUpsideDown", 1);
+                    spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
+                    spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+
                     yield return new WaitForSeconds(timeForCooldownedEffects);
-                    Camera.main.transform.Rotate(0, 0, 180);
+
+                    spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+                    yield return new WaitForSeconds(0.3f);
+                    spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
+                    spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
+                    spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+
                     break;
 
                 case ItemType.IceRink:

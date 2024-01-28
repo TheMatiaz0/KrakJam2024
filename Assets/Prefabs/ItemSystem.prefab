@@ -46,4 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeForCooldownedEffects: 5
   slipperyMaterial: {fileID: 6200000, guid: f77922abb8dad9646a5aa6537ec434db, type: 2}
-  TotalCatHappiness: 50
+  _startCatHappiness: 25
+  _gameOverCatHappiness: 0
+  _winCatHappiness: 100
+  _gameManager: {fileID: 0}
+  spinFlipMaterial: {fileID: 2100000, guid: 0d6c4cd371cd0e84d8af4368b13e6dd2, type: 2}
