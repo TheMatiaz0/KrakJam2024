@@ -906,6 +906,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065254404}
   m_CullTransparentMesh: 1
+--- !u!1 &1085093562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4161689685525071364, guid: 31565748d9109e9428b3cea20ebef74b, type: 3}
+  m_PrefabInstance: {fileID: 890800797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1194061171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8899186932568829170, guid: 061f1b3d5d3384797885ef5efdeb6f97, type: 3}
