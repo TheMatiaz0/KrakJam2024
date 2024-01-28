@@ -15,7 +15,8 @@ namespace KrakJam2024
         BigHead,
         Box,
         Wool,
-        
+
+        Paprika
     }
 
     public class Item : MonoBehaviour

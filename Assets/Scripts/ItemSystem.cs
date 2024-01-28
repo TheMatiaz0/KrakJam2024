@@ -41,6 +41,8 @@ namespace KrakJam2024
         private VolumeProfile _volumeProfile;
         [SerializeField]
         private Wench _wench;
+        [SerializeField]
+        private GameObject _llamaEncounter;
 
         [SerializeField] private BiggerHead _biggerHead;
 
@@ -95,7 +97,7 @@ namespace KrakJam2024
                 _timePausedFor -= Time.deltaTime;
                 return;
             }
-            
+
             // TODO: do it on crate drop
             TotalCatHappiness -= HappinessDecreasePerSecond * Time.deltaTime;
         }
@@ -155,6 +157,9 @@ namespace KrakJam2024
                     break;
 
                 case ItemType.Llama:
+                    _llamaEncounter.SetActive(true);
+                    yield return new WaitForSeconds(timeForCooldownedEffects);
+                    _llamaEncounter.SetActive(false);
                     break;
 
                 case ItemType.HolyWater:
@@ -171,15 +176,19 @@ namespace KrakJam2024
                 case ItemType.Box:
                     _timePausedFor = 3f;
                     break;
-                
+
                 case ItemType.BlackAndWhite:
                     yield return EnableBlackAndWhite();
                     break;
-                
+
                 case ItemType.Wool:
                     _wench.Wool();
                     break;
-                
+
+                case ItemType.Paprika:
+                    _biggerHead.Paprika();
+                    break;
+
                 default:
                     Debug.Log("Not implemented : " + item.ItemType);
                     break;
@@ -188,10 +197,21 @@ namespace KrakJam2024
 
         private IEnumerator EnableBlackAndWhite()
         {
+            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(0.3f);
+            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
             _blackAndWhite.SetInt("_Enabled", 1);
-            _volumeProfile.GetComponent<FilmGrain>().active = true;
+            if (_volumeProfile.TryGet(out FilmGrain filmGrain))
+            {
+                filmGrain.active = true;
+            }
+
             yield return new WaitForSeconds(10f);
-            _volumeProfile.GetComponent<FilmGrain>().active = false;
+
+            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(0.3f);
+            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            filmGrain.active = false;
             _blackAndWhite.SetInt("_Enabled", 0);
         }
 
@@ -212,7 +232,10 @@ namespace KrakJam2024
 
             Time.timeScale = 1;
 
-            _volumeProfile.GetComponent<FilmGrain>().active = false;
+            if (_volumeProfile.TryGet(out FilmGrain filmGrain))
+            {
+                filmGrain.active = false;
+            }
         }
     }
 }
