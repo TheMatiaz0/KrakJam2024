@@ -6,7 +6,15 @@ namespace KrakJam2024
 {
     public class Counter : MonoBehaviour
     {
-        public string GetFormattedTime() => FormatTime(Time.time);
+        private float startTime;
+        private float Delta => Time.time - startTime;
+
+        private void Start()
+        {
+            startTime = Time.time;
+        }
+
+        public string GetFormattedTime() => FormatTime(Delta);
 
         private string FormatTime(float time)
         {
