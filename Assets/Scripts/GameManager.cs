@@ -31,6 +31,11 @@ namespace KrakJam2024
 
         private void OpenPanel()
         {
+            var itmsys = FindObjectOfType<ItemSystem>();
+            if (itmsys != null)
+            {
+                Destroy(itmsys.gameObject);
+            }
             Time.timeScale = 0;
             _mainMenuButton.onClick.RemoveAllListeners();
             _restartButton.onClick.RemoveAllListeners();
