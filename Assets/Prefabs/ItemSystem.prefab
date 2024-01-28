@@ -55,7 +55,7 @@ MonoBehaviour:
   spinFlipMaterial: {fileID: 2100000, guid: 0d6c4cd371cd0e84d8af4368b13e6dd2, type: 2}
   flashBangMaterial: {fileID: 2100000, guid: bfa33a90d0e7fc4458d120a9feec0d99, type: 2}
   _blackAndWhite: {fileID: 2100000, guid: 56d8d02224ff84fd8b2c17408783b7fd, type: 2}
-  _pixaWixaBezFixa: {fileID: 0}
+  _pixaWixaBezFixa: {fileID: 2100000, guid: 86c5edbf2b100ba49a5c9ba9dc3d7210, type: 2}
   _volumeProfile: {fileID: 11400000, guid: d579725126963904da53ac0897120fe5, type: 2}
   _wench: {fileID: 0}
   _llamaEncounter: {fileID: 0}
