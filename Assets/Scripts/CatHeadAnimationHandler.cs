@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KrakJam2024
@@ -12,6 +13,8 @@ namespace KrakJam2024
         [SerializeField] private ParticleSystem badCookParticlePrefab;
         [SerializeField] private ParticleSystem gudCookParticlePrefab;
 
+        [SerializeField] private List<int> maxValues = new();
+
         private void Awake()
         {
             itemSystem.OnHappinessUp += ItemSystem_OnHappinessUp;
@@ -21,11 +24,13 @@ namespace KrakJam2024
         private void ItemSystem_OnHappinessUp(float addedValue)
         {
             CookGood();
+            SetStage();
         }
 
         private void ItemSystem_OnHappinessDown(float addedValue)
         {
             CookBad();
+            SetStage();
         }
 
         private void OnDestroy()
@@ -46,17 +51,23 @@ namespace KrakJam2024
             }
         }
 
-        public void SetStage(int stage)
+        public void SetStage()
         {
-            animator.SetInteger("Stage", stage);
+            Debug.Log(GetHighest() + 1);
+            animator.SetInteger("Stage", GetHighest() + 1);
+        }
 
-            // stage starts at 1. don't ask why
-            var stageIndex = stage - 1;
-
-            if (stageIndex >= 0 && stageIndex < stagesSprites.Length)
+        private int GetHighest()
+        {
+            for (int i = 0; i < maxValues.Count; i++)
             {
-                spriteRenderer.sprite = stagesSprites[stageIndex];
+                var maxValue = maxValues[i];
+                if (maxValue > itemSystem.TotalCatHappiness)
+                {
+                    return i;
+                }
             }
+            return maxValues.Count;
         }
 
         private void Cook(bool good)
