@@ -124,22 +124,7 @@ namespace KrakJam2024
             switch (item.ItemType)
             {
                 case ItemType.UpsideDown:
-                    yield return new WaitForSeconds(1.0f);
-
-                    spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
-                    yield return new WaitForSeconds(0.3f);
-                    spinFlipMaterial.SetInt("_FlipUpsideDown", 1);
-                    spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
-                    spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
-
-                    yield return new WaitForSeconds(timeForCooldownedEffects);
-
-                    spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
-                    yield return new WaitForSeconds(0.3f);
-                    spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
-                    spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
-                    spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
-
+                    ExecuteUpsideDownSpin();
                     break;
 
                 case ItemType.IceRink:
@@ -178,7 +163,7 @@ namespace KrakJam2024
                     break;
 
                 case ItemType.BlackAndWhite:
-                    yield return EnableBlackAndWhite();
+                    yield return ExecuteBlackAndWhite();
                     break;
 
                 case ItemType.Wool:
@@ -189,14 +174,39 @@ namespace KrakJam2024
                     _biggerHead.Paprika();
                     break;
 
+                case ItemType.Mirror:
+                    yield return ExecuteMirrorEffects();
+                    break;
+                
                 default:
                     Debug.Log("Not implemented : " + item.ItemType);
                     break;
             }
         }
 
-        private IEnumerator EnableBlackAndWhite()
+        private IEnumerator ExecuteUpsideDownSpin()
         {
+            yield return new WaitForSeconds(1.0f);
+
+            spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+            yield return new WaitForSeconds(0.3f);
+            spinFlipMaterial.SetInt("_FlipUpsideDown", 1);
+            spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
+            spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+
+            yield return new WaitForSeconds(timeForCooldownedEffects);
+
+            spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+            yield return new WaitForSeconds(0.3f);
+            spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
+            spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
+            spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+        }
+
+        private IEnumerator ExecuteBlackAndWhite()
+        {
+            yield return new WaitForSeconds(0.8f);
+
             flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
             yield return new WaitForSeconds(0.3f);
             flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
@@ -215,12 +225,15 @@ namespace KrakJam2024
             _blackAndWhite.SetInt("_Enabled", 0);
         }
 
-        [Button]
-        public void TestBW()
+        private IEnumerator ExecuteMirrorEffects()
         {
-            StartCoroutine(EnableBlackAndWhite());
+            yield return new WaitForSeconds(0.8f);
+            spinFlipMaterial.DOFloat(200.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic);
+            yield return new WaitForSeconds(4.0f);
+            spinFlipMaterial.DOFloat(-200.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic);
+            yield return new WaitForSeconds(4.0f);
+            spinFlipMaterial.DOFloat(0.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic);
         }
-
 
         private void OnDestroy()
         {
@@ -229,6 +242,8 @@ namespace KrakJam2024
 
             flashBangMaterial.SetFloat("_Contrast", 0.0f);
             _blackAndWhite.SetInt("_Enabled", 0);
+
+            spinFlipMaterial.SetFloat("_Mirror_Folding_Frequency", 0f);
 
             Time.timeScale = 1;
 
