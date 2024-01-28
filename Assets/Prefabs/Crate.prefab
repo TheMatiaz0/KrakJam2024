@@ -215,6 +215,9 @@ MonoBehaviour:
   - {fileID: 8888748200380207102, guid: cc85709cae44c4b42b19cfcc312c9c20, type: 3}
   - {fileID: 8888748200380207102, guid: 67b79026449707d49bfc498dec269153, type: 3}
   - {fileID: 8888748200380207102, guid: bd7f8540d1aec194c92e4eab9aa6f3e0, type: 3}
+  - {fileID: 8888748200380207102, guid: 0066fdf8289bf8049ad4a8dc91ec6249, type: 3}
+  - {fileID: 8888748200380207102, guid: 4a361b5c4d25aeb42a33e0e6e74c6dfd, type: 3}
+  - {fileID: 8888748200380207102, guid: 27cca6751d56ca44eb9a4a1b71d0e7d9, type: 3}
   _crateDebrisPrefab: {fileID: 2174788682393661635, guid: ded9e1071566fe741823c9db4a1ff267, type: 3}
   _crushSound: {fileID: 8300000, guid: a938ebece10187341a90c28a1d7298a1, type: 3}
 --- !u!82 &9030289435718165098

@@ -2248,6 +2248,10 @@ PrefabInstance:
       propertyPath: _blackAndWhite
       value: 
       objectReference: {fileID: 2100000, guid: 56d8d02224ff84fd8b2c17408783b7fd, type: 2}
+    - target: {fileID: 19389498790685427, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
+      propertyPath: HappinessDecreasePerSecond
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5824482467876621519, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
