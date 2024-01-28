@@ -14,9 +14,51 @@ namespace KrakJam2024
         private float timeForCooldownedEffects = 4;
         [SerializeField]
         private PhysicsMaterial2D slipperyMaterial;
+        [SerializeField]
+        private float _startCatHappiness = 25;
+        [SerializeField]
+        private float _gameOverCatHappiness = 0;
+        [SerializeField]
+        private float _winCatHappiness = 100;
+        [SerializeField]
+        private GameManager _gameManager;
 
         private PhysicsMaterial2D cachedMaterial;
-        public float TotalCatHappiness = 50;
+
+        private float _totalCatHappiness;
+        public float TotalCatHappiness 
+        {
+            get => _totalCatHappiness;
+            private set
+            {
+                if (value != _totalCatHappiness)
+                {
+                    if (value <= 0)
+                    {
+                        _gameManager.GameOver();
+                        ResetHappiness();
+                        return;
+                    }
+                    else if (value >= 100)
+                    {
+                        _gameManager.Win();
+                        ResetHappiness();
+                        return;
+                    }
+                    _totalCatHappiness = value;
+                }
+            }
+        }
+
+        private void ResetHappiness()
+        {
+            _totalCatHappiness = _startCatHappiness;
+        }
+
+        private void Awake()
+        {
+            ResetHappiness();
+        }
 
         public void Do(Item item)
         {

@@ -7,6 +7,7 @@ namespace KrakJam2024
     {
         [SerializeField] private Rigidbody2D _body;
         [SerializeField] private List<Item> _itemPrefabs;
+        [SerializeField] private ParticleSystem _crateDebrisPrefab;
         private CratesController _controller;
 
         public void Take()
@@ -31,7 +32,9 @@ namespace KrakJam2024
                 Destroy(gameObject);
                 return;
             }
-            
+
+            var particles = Instantiate(_crateDebrisPrefab, transform.position, _crateDebrisPrefab.transform.rotation);
+
             var randomItem = _itemPrefabs[Random.Range(0, _itemPrefabs.Count)];
             Instantiate(randomItem, transform.position, Quaternion.identity);
             randomItem.GetComponent<Rigidbody2D>().velocity = -_body.velocity * 0.5f;

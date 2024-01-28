@@ -504,6 +504,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1823535934209020615, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
+      propertyPath: rotationSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823535934209020615, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
+      propertyPath: verticalWiggleScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1823535934209020615, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
+      propertyPath: verticalWiggleSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6653142781028509022, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
       propertyPath: m_Name
       value: Boxes
@@ -547,6 +559,18 @@ PrefabInstance:
     - target: {fileID: 8423191289146299089, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120595930654615173, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
+      propertyPath: rotationSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120595930654615173, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
+      propertyPath: verticalWiggleScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9120595930654615173, guid: 1e9eed1164e7c4fb0b11419586aa65d1, type: 3}
+      propertyPath: verticalWiggleSpeed
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

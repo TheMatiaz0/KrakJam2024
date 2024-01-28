@@ -23,6 +23,8 @@ namespace KrakJam2024
         public float CatHappinessIncrease => _catHappinessIncrease;
         public ItemType ItemType => _itemType;
 
+        public float Mass => _body.mass;
+
         public void Take()
         {
             _body.velocity = Vector2.zero;

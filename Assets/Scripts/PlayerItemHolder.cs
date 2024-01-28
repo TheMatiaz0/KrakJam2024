@@ -12,9 +12,12 @@ namespace KrakJam2024
         [SerializeField] private Transform _leftThrow, _rightThrow;
 
         private float _currentPower;
-        public float CurrentPower01 => Mathf.InverseLerp(_throwPowerMin, _throwPowerMax, _currentPower);
+        public float CurrentPowerForIndicator => Mathf.InverseLerp(_throwPowerMin, _throwPowerMax, _currentPower);
+        public float CurrentPower => _currentPower;
         public bool CanThrow => _canThrow;
         public Transform ThrowTarget => _playerView.LastDirection < 0f ? _leftThrow : _rightThrow;
+        public Vector3 ThrowDirection => GetThrowVector();
+        public Item HeldItem => _currentHeldItem;
 
         [Space]
         [SerializeField] private Transform _holdHere;
@@ -61,6 +64,20 @@ namespace KrakJam2024
             // }
         }
 
+        private void ThrowHeldItem()
+        {
+            if(_currentHeldItem == null)
+            {
+                return;
+            }
+
+            _currentHeldItem.Throw(GetThrowVector() * _currentPower);
+            UnregisterItemOnGround(_currentHeldItem);
+            _currentHeldItem = null;
+            _canThrow = false;
+            _animator.SetBool("IsHoldingItem", false);
+        }
+
         private void FixedUpdate()
         {
             if (_currentHeldItem != null)
@@ -76,11 +93,7 @@ namespace KrakJam2024
                 {
                     if (_input.actions[TAKE_ACTION].WasReleasedThisFrame())
                     {
-                        _currentHeldItem.Throw(GetThrowVector().normalized * _currentPower);
-                        RegisterItemOnGround(_currentHeldItem);
-                        _currentHeldItem = null;
-                        _canThrow = false;
-                        _animator.SetBool("IsHoldingItem", false);
+                        ThrowHeldItem();
                     }
                     else
                     {
@@ -99,7 +112,7 @@ namespace KrakJam2024
 
         private Vector2 GetThrowVector()
         {
-            return ThrowTarget.position - _holdHere.position;
+            return (ThrowTarget.position - _holdHere.position).normalized;
         }
     }
 }
