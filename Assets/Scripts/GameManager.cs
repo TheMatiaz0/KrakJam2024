@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -36,7 +37,12 @@ namespace KrakJam2024
             {
                 Destroy(itmsys.gameObject);
             }
+
+            EventSystem.current.SetSelectedGameObject(_mainMenuButton.gameObject);
+            _mainMenuButton.Select();
+
             Time.timeScale = 0;
+
             _mainMenuButton.onClick.RemoveAllListeners();
             _restartButton.onClick.RemoveAllListeners();
 
