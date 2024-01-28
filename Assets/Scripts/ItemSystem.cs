@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KrakJam2024
@@ -9,7 +8,11 @@ namespace KrakJam2024
     public class ItemSystem : MonoBehaviour
     {
         public event Action<float> OnHappinessUp = delegate { };
+        public event Action<float> OnHappinessChanged;
         public event Action<float> OnHappinessDown = delegate { };
+
+        [SerializeField]
+        private float HappinessDecreasePerSecond = 1.2f;
 
         [SerializeField]
         private float timeForCooldownedEffects = 4;
@@ -36,26 +39,28 @@ namespace KrakJam2024
         public float GameOverHappiness => _gameOverCatHappiness;
         public float WinHappiness => _winCatHappiness;
 
-        public float TotalCatHappiness 
+        public float TotalCatHappiness
         {
             get => _totalCatHappiness;
             private set
             {
-                if (value != _totalCatHappiness)
+                if (Math.Abs(value - _totalCatHappiness) > Mathf.Epsilon)
                 {
+                    _totalCatHappiness = value;
+                    OnHappinessChanged?.Invoke(_totalCatHappiness);
+
                     if (value <= 0)
                     {
                         _gameManager.GameOver();
                         ResetHappiness();
                         return;
                     }
-                    else if (value >= 100)
+
+                    if (value >= 100)
                     {
                         _gameManager.Win();
                         ResetHappiness();
-                        return;
                     }
-                    _totalCatHappiness = value;
                 }
             }
         }
@@ -68,6 +73,11 @@ namespace KrakJam2024
         private void Awake()
         {
             ResetHappiness();
+        }
+
+        private void Update()
+        {
+            TotalCatHappiness -= HappinessDecreasePerSecond * Time.deltaTime;
         }
 
         public void Do(Item item)
@@ -135,7 +145,6 @@ namespace KrakJam2024
                     flashBangMaterial.DOFloat(0.0f, "_Contrast", 2.0f).SetEase(Ease.Linear);
 
                     break;
-
 
                 default: break;
             }

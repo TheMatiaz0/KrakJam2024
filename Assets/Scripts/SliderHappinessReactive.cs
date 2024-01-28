@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 namespace KrakJam2024
 {
     public class SliderHappinessReactive : MonoBehaviour
@@ -20,29 +17,17 @@ namespace KrakJam2024
 
             SliderRefresh(_itemSystem.StartHappiness);
 
-            _itemSystem.OnHappinessUp += OnHappinessUp;
-            _itemSystem.OnHappinessDown += OnHappinessDown;
+            _itemSystem.OnHappinessChanged += SliderRefresh;
         }
 
         private void OnDestroy()
         {
-            _itemSystem.OnHappinessUp -= OnHappinessUp;  
-            _itemSystem.OnHappinessDown -= OnHappinessDown;
+            _itemSystem.OnHappinessChanged -= SliderRefresh;
         }
 
         private void SliderRefresh(float value)
         {
             _slider.value = value;
-        }
-
-        private void OnHappinessUp(float value)
-        {
-            SliderRefresh(_itemSystem.TotalCatHappiness);
-        }
-
-        private void OnHappinessDown(float value)
-        {
-            SliderRefresh(_itemSystem.TotalCatHappiness);
         }
     }
 }
