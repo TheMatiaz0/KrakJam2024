@@ -215,7 +215,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.5600002
+  m_Distance: 0.56000006
   m_MaxDistanceOnly: 0
 --- !u!1 &5482488991905299375
 GameObject:
@@ -402,7 +402,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.5799999
+  m_Distance: 0.58
   m_MaxDistanceOnly: 0
 --- !u!1 &5694702975692716701
 GameObject:
@@ -952,7 +952,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 0.5799999
+  m_Distance: 0.58
   m_MaxDistanceOnly: 0
 --- !u!1 &8296801087885282480
 GameObject:
@@ -1277,6 +1277,46 @@ PrefabInstance:
       propertyPath: m_AlwaysUpdate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1150418576482609368, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7143628
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150418576482609368, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150418576482609368, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150418576482609368, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6997755
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150418576482609368, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 84.423
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741302871219878412, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8336688
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741302871219878412, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741302871219878412, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741302871219878412, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.55226475
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741302871219878412, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -67.045
+      objectReference: {fileID: 0}
     - target: {fileID: 3826099299850982164, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1372,6 +1412,26 @@ PrefabInstance:
     - target: {fileID: 8125605898747663928, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088193774681790742, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.039215986
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088193774681790742, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088193774681790742, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088193774681790742, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.99923074
+      objectReference: {fileID: 0}
+    - target: {fileID: 9088193774681790742, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -175.505
       objectReference: {fileID: 0}
     - target: {fileID: 9153789833037330394, guid: e67ad1b40ab4b294eb988d69f209295c, type: 3}
       propertyPath: m_Name
