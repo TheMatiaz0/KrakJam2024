@@ -796,6 +796,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6191075241987930324, guid: 5ee14e2f963f0cd40bb47d5a0553b994, type: 3}
   m_PrefabInstance: {fileID: 781114824711364093}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &901202013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2527624050900384402, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+  m_PrefabInstance: {fileID: 8322954562941848876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e73bd045ef41118f4de5565e258a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &904257976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,9 +2237,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 19389498790685427, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
+      propertyPath: _biggerHead
+      value: 
+      objectReference: {fileID: 901202013}
+    - target: {fileID: 19389498790685427, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 1772513888}
+    - target: {fileID: 19389498790685427, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
+      propertyPath: _blackAndWhite
+      value: 
+      objectReference: {fileID: 2100000, guid: 56d8d02224ff84fd8b2c17408783b7fd, type: 2}
     - target: {fileID: 5824482467876621519, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2683,14 +2702,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 242188747059331863, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 242188747059331863, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -11.08
-      objectReference: {fileID: 0}
     - target: {fileID: 5694702975692716701, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_Name
       value: Winch

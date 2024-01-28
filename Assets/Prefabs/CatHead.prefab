@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 5928562817932090742}
   - component: {fileID: 6060526488353483436}
   - component: {fileID: 8853390209632666185}
+  - component: {fileID: 2527624050900384402}
   m_Layer: 0
   m_Name: CatHead
   m_TagString: Untagged
@@ -369,3 +370,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2527624050900384402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8894306687190254402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e73bd045ef41118f4de5565e258a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _standardSize: {x: 1, y: 1, z: 1}
+  _largeSize: {x: 1.7, y: 1.7, z: 1.7}
+  _changedPos: {x: 0, y: 2, z: 0}
+  _originalPos: {x: 0, y: 0, z: 0}

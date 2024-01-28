@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 namespace KrakJam2024
 {
     public class PlayerItemHolder : MonoBehaviour
@@ -26,11 +28,17 @@ namespace KrakJam2024
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _throwPowerMultiply = 100f;
         [SerializeField] private Animator _animator;
+        [Header("Sounds")]
+        [SerializeField] private AudioClip _throwSound;
+        [SerializeField] private AudioClip _buildupSound;
+        [SerializeField] private AudioSource _audioSource;
+
         private PlayerView _playerView;
         private bool _takenThisFrame;
         private bool _canThrow;
 
-        private Item _lastRegisteredItem;
+
+        private List<Item> _registeredItemsStack = new(); 
 
         private void Awake()
         {
@@ -39,22 +47,26 @@ namespace KrakJam2024
 
         public void RegisterGrabbedItem(Item item)
         {
-            _lastRegisteredItem = item;
+            _registeredItemsStack.Add(item);
         }
 
         public void UnregisterGrabbedItem(Item item)
         {
-            _lastRegisteredItem = null;
+            _registeredItemsStack.Remove(item);
         }
 
         private void OnTake()
         {
-            if (_lastRegisteredItem != null && _currentHeldItem == null)
+            if (_registeredItemsStack.Count == 0)
+                return;
+            
+            if (_registeredItemsStack.Count > 0 && _currentHeldItem == null)
             {
                 _animator.SetBool("IsHoldingItem", true);
-                _lastRegisteredItem.Take();
-                _currentHeldItem = _lastRegisteredItem;
-                _lastRegisteredItem = null;
+                var item = _registeredItemsStack[^1];
+                _registeredItemsStack.Remove(item);
+                item.Take();
+                _currentHeldItem = item;
                 _takenThisFrame = true;
             }
             // else if (_currentHeldItem != null)
@@ -95,10 +107,15 @@ namespace KrakJam2024
                 {
                     if (_input.actions[TAKE_ACTION].WasReleasedThisFrame())
                     {
+                        _audioSource.Stop();
                         ThrowHeldItem();
+                        _audioSource.PlayOneShot(_throwSound);
                     }
                     else
                     {
+                        _audioSource.clip = _buildupSound;
+                        _audioSource.loop = true;
+                        _audioSource.Play();
                         _currentPower += _powerPlusPerSecond * Time.fixedDeltaTime;
                         _currentPower = Mathf.Min(_currentPower, _throwPowerMax);
                     }

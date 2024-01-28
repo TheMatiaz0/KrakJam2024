@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace KrakJam2024
@@ -13,6 +14,7 @@ namespace KrakJam2024
 
         [SerializeField]
         private float HappinessDecreasePerSecond = 1.2f;
+        private float _timePausedFor = 0f;
 
         [SerializeField]
         private float timeForCooldownedEffects = 4;
@@ -30,6 +32,10 @@ namespace KrakJam2024
         private Material spinFlipMaterial;
         [SerializeField]
         private Material flashBangMaterial;
+        [SerializeField]
+        private Material _blackAndWhite;
+
+        [SerializeField] private BiggerHead _biggerHead;
 
         private PhysicsMaterial2D cachedMaterial;
 
@@ -77,6 +83,12 @@ namespace KrakJam2024
 
         private void Update()
         {
+            if (_timePausedFor > 0f)
+            {
+                _timePausedFor -= Time.deltaTime;
+                return;
+            }
+            
             TotalCatHappiness -= HappinessDecreasePerSecond * Time.deltaTime;
         }
 
@@ -142,12 +154,38 @@ namespace KrakJam2024
 
                     flashBangMaterial.DOFloat(2.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
                     yield return new WaitForSeconds(0.3f);
-                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 2.0f).SetEase(Ease.Linear);
+                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 4.0f).SetEase(Ease.Linear);
 
                     break;
+                case ItemType.BigHead:
+                    _biggerHead.Run();
+                    break;
+                case ItemType.Box:
+                    _timePausedFor = 3f;
+                    break;
+                
+                case ItemType.BlackAndWhite:
+                    yield return EnableBlackAndWhite();
+                    
+                    break;
 
-                default: break;
+                default:
+                    Debug.Log("Not implemented : " + item.ItemType);
+                    break;
             }
+        }
+
+        private IEnumerator EnableBlackAndWhite()
+        {
+            _blackAndWhite.SetInt("_Enabled", 1);
+            yield return new WaitForSeconds(10f);
+            _blackAndWhite.SetInt("_Enabled", 0);
+        }
+
+        [Button]
+        public void TestBW()
+        {
+            StartCoroutine(EnableBlackAndWhite());
         }
 
 
@@ -155,6 +193,10 @@ namespace KrakJam2024
         {
             spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
             spinFlipMaterial.SetFloat("_Spiral_Multiplier", 0.0f);
+
+            flashBangMaterial.SetFloat("_Contrast", 0.0f);
+
+            Time.timeScale = 1;
         }
     }
 }
