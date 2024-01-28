@@ -17,6 +17,7 @@ namespace KrakJam2024
 
         private float _toNextSpawn;
         private Dictionary<Transform, float> _registered = new();
+        public List<Transform> AllCrates => new(_registered.Keys);
 
         public void Unregister(Transform go)
         {

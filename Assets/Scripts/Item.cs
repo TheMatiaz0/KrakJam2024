@@ -19,6 +19,7 @@ namespace KrakJam2024
         Snowflake,
         NineHearts,
         Mirror,
+        XMas,
         PilledPillingPill,
     }
 
