@@ -166,9 +166,8 @@ namespace KrakJam2024
                 
                 case ItemType.BlackAndWhite:
                     yield return EnableBlackAndWhite();
-                    
                     break;
-
+                
                 default:
                     Debug.Log("Not implemented : " + item.ItemType);
                     break;

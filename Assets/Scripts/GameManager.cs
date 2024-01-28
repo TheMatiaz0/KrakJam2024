@@ -26,7 +26,7 @@ namespace KrakJam2024
         private void Awake()
         {
             _uiPanel.alpha = 0;
-            Cursor.visible = false;
+            // Cursor.visible = false;
         }
 
         private void OpenPanel()
