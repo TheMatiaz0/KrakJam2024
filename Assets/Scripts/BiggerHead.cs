@@ -13,7 +13,7 @@ namespace KrakJam2024
         [SerializeField] private Vector3 _originalPos;
 
         [Button]
-        public void Run() => Run(5f);
+        public void Run() => Run(15f);
 
         private void Start()
         {
