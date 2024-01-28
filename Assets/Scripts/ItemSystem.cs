@@ -154,7 +154,7 @@ namespace KrakJam2024
 
                     flashBangMaterial.DOFloat(2.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
                     yield return new WaitForSeconds(0.3f);
-                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 2.0f).SetEase(Ease.Linear);
+                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 4.0f).SetEase(Ease.Linear);
 
                     break;
                 case ItemType.BigHead:
