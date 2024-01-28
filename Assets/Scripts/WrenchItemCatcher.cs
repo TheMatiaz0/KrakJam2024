@@ -29,7 +29,7 @@ namespace KrakJam2024
         {
             if (_input.actions[CATCH_ACTION].WasPressedThisFrame())
             {
-                var itemCollider = Physics2D.OverlapCircle(_catchPoint.position, .33f, _catchLayerMask);
+                var itemCollider = Physics2D.OverlapCircle(_catchPoint.position, .05f, _catchLayerMask);
 
                 if (itemCollider != null && itemCollider.GetComponentInParent<Crate>())
                 {
