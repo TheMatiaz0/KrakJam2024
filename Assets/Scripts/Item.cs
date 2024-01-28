@@ -14,6 +14,8 @@ namespace KrakJam2024
         HolyWater,
         BigHead,
         Box,
+        Wool,
+        
     }
 
     public class Item : MonoBehaviour

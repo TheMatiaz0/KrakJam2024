@@ -6,6 +6,8 @@ namespace KrakJam2024
     [SelectionBase]
     public class Crate : MonoBehaviour
     {
+        public static bool HasDropped { get; private set; }
+
         [SerializeField] private Rigidbody2D _body;
         [SerializeField] private List<Item> _itemPrefabs;
         [SerializeField] private ParticleSystem _crateDebrisPrefab;
@@ -53,6 +55,8 @@ namespace KrakJam2024
 
         private void OnDestroy()
         {
+            HasDropped = false;
+
             if (_controller)
                 _controller.Unregister(transform);
         }
