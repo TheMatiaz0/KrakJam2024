@@ -58,7 +58,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2171101094156118462, guid: 9b86291455b104770a1151aea9aacc49, type: 3}
       propertyPath: m_Name
-      value: Pixa
+      value: Item_Pixa
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647427896967363013, guid: 9b86291455b104770a1151aea9aacc49, type: 3}
+      propertyPath: _itemType
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7262182787737673530, guid: 9b86291455b104770a1151aea9aacc49, type: 3}
       propertyPath: m_Sprite

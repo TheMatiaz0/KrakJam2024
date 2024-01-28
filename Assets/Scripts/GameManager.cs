@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace KrakJam2024
@@ -29,14 +30,29 @@ namespace KrakJam2024
 
         private void OpenPanel()
         {
+            _mainMenuButton.onClick.RemoveAllListeners();
+            _restartButton.onClick.RemoveAllListeners();
+
+            _mainMenuButton.onClick.AddListener(LoadMainMenu);
+            _restartButton.onClick.AddListener(StartOver);
             _uiPanel.alpha = 1;
-            _timerText.text = _counter.CounterText.text;
+            _timerText.text = _counter.GetFormattedTime();
+        }
+
+        private void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenuScene");
+        }
+
+        private void StartOver()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         public void GameOver()
         {
             _title.text = "Defeat";
-            _mottoLine.text = "You made the cat cry! Are you proud of yourself?";
+            _mottoLine.text = "You made the cat cry!";
             
             OpenPanel();
         }
@@ -44,7 +60,7 @@ namespace KrakJam2024
         public void Win()
         {
             _title.text = "Victory";
-            _mottoLine.text = "You made the cat laugh! You are a great chef!";
+            _mottoLine.text = "You made the cat laugh! ^w^";
 
             OpenPanel();
         }

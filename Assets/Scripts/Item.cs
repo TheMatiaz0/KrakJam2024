@@ -10,7 +10,8 @@ namespace KrakJam2024
         Glitter,
         BlackAndWhite,
         Flood,
-        Catnip
+        Catnip,
+        HolyWater
     }
 
     public class Item : MonoBehaviour
@@ -24,6 +25,8 @@ namespace KrakJam2024
         public ItemType ItemType => _itemType;
 
         public float Mass => _body.mass;
+
+        public bool Held => _body.isKinematic;
 
         public void Take()
         {
@@ -47,7 +50,7 @@ namespace KrakJam2024
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
                 LastOwner = ownerTransmitter;
-                ownerTransmitter.Player?.RegisterItemOnGround(this);
+                ownerTransmitter.Player?.RegisterGrabbedItem(this);
             }
         }
 
@@ -55,7 +58,7 @@ namespace KrakJam2024
         {
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                ownerTransmitter.Player?.UnregisterItemOnGround(this);
+                ownerTransmitter.Player?.UnregisterGrabbedItem(this);
             }
         }
         

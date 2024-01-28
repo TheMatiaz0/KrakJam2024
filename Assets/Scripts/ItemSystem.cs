@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,10 +23,19 @@ namespace KrakJam2024
         private float _winCatHappiness = 100;
         [SerializeField]
         private GameManager _gameManager;
+        [SerializeField]
+        private Material spinFlipMaterial;
+        [SerializeField]
+        private Material flashBangMaterial;
 
         private PhysicsMaterial2D cachedMaterial;
 
         private float _totalCatHappiness;
+
+        public float StartHappiness => _startCatHappiness;
+        public float GameOverHappiness => _gameOverCatHappiness;
+        public float WinHappiness => _winCatHappiness;
+
         public float TotalCatHappiness 
         {
             get => _totalCatHappiness;
@@ -82,9 +92,22 @@ namespace KrakJam2024
             switch (item.ItemType)
             {
                 case ItemType.UpsideDown:
-                    Camera.main.transform.Rotate(0, 0, 180);
+                    yield return new WaitForSeconds(1.0f);
+
+                    spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+                    yield return new WaitForSeconds(0.3f);
+                    spinFlipMaterial.SetInt("_FlipUpsideDown", 1);
+                    spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
+                    spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+
                     yield return new WaitForSeconds(timeForCooldownedEffects);
-                    Camera.main.transform.Rotate(0, 0, 180);
+
+                    spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+                    yield return new WaitForSeconds(0.3f);
+                    spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
+                    spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
+                    spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+
                     break;
 
                 case ItemType.IceRink:
@@ -97,15 +120,32 @@ namespace KrakJam2024
 
                 case ItemType.Catnip:
                     Time.timeScale = 1.75f;
-                    yield return new WaitForSeconds(timeForCooldownedEffects);
+                    yield return new WaitForSecondsRealtime(timeForCooldownedEffects);
                     Time.timeScale = 1f;
                     break;
 
                 case ItemType.Llama:
                     break;
 
+                case ItemType.HolyWater:
+                    yield return new WaitForSeconds(0.8f);
+
+                    flashBangMaterial.DOFloat(2.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+                    yield return new WaitForSeconds(0.3f);
+                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 2.0f).SetEase(Ease.Linear);
+
+                    break;
+
+
                 default: break;
             }
+        }
+
+
+        private void OnDestroy()
+        {
+            spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
+            spinFlipMaterial.SetFloat("_Spiral_Multiplier", 0.0f);
         }
     }
 }
