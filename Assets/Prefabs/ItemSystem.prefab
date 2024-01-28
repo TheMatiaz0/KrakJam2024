@@ -55,6 +55,7 @@ MonoBehaviour:
   spinFlipMaterial: {fileID: 2100000, guid: 0d6c4cd371cd0e84d8af4368b13e6dd2, type: 2}
   flashBangMaterial: {fileID: 2100000, guid: bfa33a90d0e7fc4458d120a9feec0d99, type: 2}
   _blackAndWhite: {fileID: 2100000, guid: 56d8d02224ff84fd8b2c17408783b7fd, type: 2}
+  _pixaWixaBezFixa: {fileID: 0}
   _volumeProfile: {fileID: 11400000, guid: d579725126963904da53ac0897120fe5, type: 2}
   _wench: {fileID: 0}
   _llamaEncounter: {fileID: 0}
@@ -67,6 +68,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5824482467876621519}
     m_Modifications:
+    - target: {fileID: 2428251985841951778, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0712693
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428251985841951778, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+      propertyPath: m_Size.y
+      value: 0.23251343
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428251985841951778, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0042102635
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428251985841951778, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.49604905
+      objectReference: {fileID: 0}
     - target: {fileID: 2527624050900384402, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
       propertyPath: _logic
       value: 
