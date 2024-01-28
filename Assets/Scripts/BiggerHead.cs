@@ -49,5 +49,10 @@ namespace KrakJam2024
 
             _timeToDisable -= Time.deltaTime;
         }
+        
+        public void Paprika()
+        {
+            
+        }
     }
 }

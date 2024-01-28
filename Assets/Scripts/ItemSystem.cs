@@ -180,6 +180,10 @@ namespace KrakJam2024
                     _wench.Wool();
                     break;
                 
+                case ItemType.Paprika:
+                    _biggerHead.Paprika();
+                    break;
+                
                 default:
                     Debug.Log("Not implemented : " + item.ItemType);
                     break;
@@ -212,7 +216,7 @@ namespace KrakJam2024
 
             Time.timeScale = 1;
 
-            _volumeProfile.GetComponent<FilmGrain>().active = false;
+            //_volumeProfile.GetComponent<FilmGrain>().active = false;
         }
     }
 }
