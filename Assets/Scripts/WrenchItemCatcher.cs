@@ -11,6 +11,8 @@ namespace KrakJam2024
         [SerializeField] private Transform _catchPoint;
         [SerializeField] private LayerMask _catchLayerMask;
         [SerializeField] private Rigidbody2D _hookBody;
+        [SerializeField] private AudioClip _catchItemSound;
+        [SerializeField] private AudioSource _audioSource;
 
         [SerializeField] private Animator _anim;
 
@@ -38,6 +40,7 @@ namespace KrakJam2024
                     _holdCrate.Take();
                     _holdCrate.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.None;
                     _anim.SetBool("Hold", true);
+                    _audioSource.PlayOneShot(_catchItemSound);
                 }
                 else
                 {

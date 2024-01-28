@@ -19,6 +19,8 @@ namespace KrakJam2024
         [SerializeField] private Rigidbody2D _body;
         [SerializeField] private float _catHappinessIncrease;
         [SerializeField] private ItemType _itemType;
+        [SerializeField] private AudioClip _pickUpClip;
+        [SerializeField] private AudioSource _audioSource;
 
         public PlayerOwnerTransmitter LastOwner { get; set; }
         public float CatHappinessIncrease => _catHappinessIncrease;
@@ -33,6 +35,7 @@ namespace KrakJam2024
             _body.velocity = Vector2.zero;
             _body.angularVelocity = 0f;
             _body.isKinematic = true;
+            _audioSource.PlayOneShot(_pickUpClip);
         }
 
         public void Throw(Vector2 throwVector)
