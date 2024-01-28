@@ -38,6 +38,8 @@ namespace KrakJam2024
         [SerializeField]
         private Material _blackAndWhite;
         [SerializeField]
+        private Material _pixaWixaBezFixa;
+        [SerializeField]
         private VolumeProfile _volumeProfile;
         [SerializeField]
         private Wench _wench;
@@ -124,7 +126,7 @@ namespace KrakJam2024
             switch (item.ItemType)
             {
                 case ItemType.UpsideDown:
-                    ExecuteUpsideDownSpin();
+                    yield return ExecuteUpsideDownSpin();
                     break;
 
                 case ItemType.IceRink:
@@ -177,7 +179,11 @@ namespace KrakJam2024
                 case ItemType.Mirror:
                     yield return ExecuteMirrorEffects();
                     break;
-                
+
+                case ItemType.PilledPillingPill:
+                    yield return StartThePixaWixaWithoutFixa();
+                    break;
+
                 default:
                     Debug.Log("Not implemented : " + item.ItemType);
                     break;
@@ -235,6 +241,21 @@ namespace KrakJam2024
             spinFlipMaterial.DOFloat(0.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic);
         }
 
+        private IEnumerator StartThePixaWixaWithoutFixa()
+        {
+            yield return new WaitForSeconds(0.8f);
+
+            var initialIntensity = _pixaWixaBezFixa.GetFloat("_WiggleIntensity");
+
+            _pixaWixaBezFixa.DOFloat(0.12f, "_WiggleIntensity", 4f).SetEase(Ease.InOutCubic);
+            _pixaWixaBezFixa.DOFloat(1.0f, "_HueShiftValue", 4f).SetEase(Ease.InOutCubic);
+            yield return new WaitForSeconds(10.0f);
+
+            _pixaWixaBezFixa.DOFloat(initialIntensity, "_WiggleIntensity", 2f).SetEase(Ease.InOutCubic);
+            _pixaWixaBezFixa.DOFloat(0.0f, "_HueShiftValue", 2f).SetEase(Ease.InOutCubic);
+
+        }
+
         private void OnDestroy()
         {
             spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
@@ -244,6 +265,9 @@ namespace KrakJam2024
             _blackAndWhite.SetInt("_Enabled", 0);
 
             spinFlipMaterial.SetFloat("_Mirror_Folding_Frequency", 0f);
+
+            _pixaWixaBezFixa.SetFloat("_WiggleIntensity", 0.01f);
+            _pixaWixaBezFixa.SetFloat("_HueShiftValue", 0f);
 
             Time.timeScale = 1;
 

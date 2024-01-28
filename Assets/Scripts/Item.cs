@@ -18,7 +18,9 @@ namespace KrakJam2024
         Paprika,
         Snowflake,
         NineHearts,
-        Mirror
+        Mirror,
+        XMas,
+        PilledPillingPill,
     }
 
     public class Item : MonoBehaviour
