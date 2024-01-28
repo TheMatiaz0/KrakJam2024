@@ -45,6 +45,8 @@ namespace KrakJam2024
         private Wench _wench;
         [SerializeField]
         private GameObject _llamaEncounter;
+        [SerializeField]
+        private CratesController[] _cratesController;
 
         [SerializeField] private BiggerHead _biggerHead;
 
@@ -55,6 +57,7 @@ namespace KrakJam2024
         public float StartHappiness => _startCatHappiness;
         public float GameOverHappiness => _gameOverCatHappiness;
         public float WinHappiness => _winCatHappiness;
+        public CratesController[] CratesControllers => _cratesController;
 
         public float TotalCatHappiness
         {
@@ -178,6 +181,20 @@ namespace KrakJam2024
 
                 case ItemType.Mirror:
                     yield return ExecuteMirrorEffects();
+                    break;
+
+                case ItemType.XMas:
+                    foreach (var cc in CratesControllers)
+                    {
+                        foreach (var crateTransform in cc.AllCrates)
+                        {
+                            var crateObject = crateTransform.GetComponent<Crate>();
+                            crateObject.Take();
+                            crateObject.GetComponent<Rigidbody2D>().constraints = 0;
+                            crateObject.Throw(Vector2.down);
+                            Debug.Log(crateObject.gameObject.ToString());
+                        }
+                    }
                     break;
 
                 case ItemType.PilledPillingPill:
