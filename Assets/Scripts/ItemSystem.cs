@@ -3,6 +3,9 @@ using System;
 using System.Collections;
 using NaughtyAttributes;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
 
 namespace KrakJam2024
 {
@@ -34,6 +37,8 @@ namespace KrakJam2024
         private Material flashBangMaterial;
         [SerializeField]
         private Material _blackAndWhite;
+        [SerializeField]
+        private VolumeProfile _volumeProfile;
         [SerializeField]
         private Wench _wench;
 
@@ -184,7 +189,9 @@ namespace KrakJam2024
         private IEnumerator EnableBlackAndWhite()
         {
             _blackAndWhite.SetInt("_Enabled", 1);
+            _volumeProfile.GetComponent<FilmGrain>().active = true;
             yield return new WaitForSeconds(10f);
+            _volumeProfile.GetComponent<FilmGrain>().active = false;
             _blackAndWhite.SetInt("_Enabled", 0);
         }
 
@@ -201,8 +208,11 @@ namespace KrakJam2024
             spinFlipMaterial.SetFloat("_Spiral_Multiplier", 0.0f);
 
             flashBangMaterial.SetFloat("_Contrast", 0.0f);
+            _blackAndWhite.SetInt("_Enabled", 0);
 
             Time.timeScale = 1;
+
+            _volumeProfile.GetComponent<FilmGrain>().active = false;
         }
     }
 }
