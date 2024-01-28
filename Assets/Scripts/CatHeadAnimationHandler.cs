@@ -53,7 +53,6 @@ namespace KrakJam2024
 
         public void SetStage()
         {
-            Debug.Log(GetHighest() + 1);
             animator.SetInteger("Stage", GetHighest() + 1);
         }
 
