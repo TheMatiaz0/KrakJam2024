@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ namespace KrakJam2024
         [SerializeField] private ParticleSystem gudCookParticlePrefab;
 
         [SerializeField] private List<int> maxValues = new();
+        [SerializeField] private AudioSource audioSource;
+        // [SerializeField] private AudioClip goodSound;
+        // [SerializeField] private AudioClip badSound;
+        [SerializeField] private AudioClip buildupSound;
 
         private void Awake()
         {
@@ -71,6 +76,9 @@ namespace KrakJam2024
 
         private void Cook(bool good)
         {
+            audioSource.PlayOneShot(buildupSound);
+            // audioSource.PlayOneShot(good ? goodSound : badSound);
+
             animator.SetTrigger("LetHimCook");
             var particle = Instantiate(good ? gudCookParticlePrefab : badCookParticlePrefab, transform);
             Destroy(particle, 2.0f);
