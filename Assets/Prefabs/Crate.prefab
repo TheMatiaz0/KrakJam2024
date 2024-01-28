@@ -206,7 +206,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _body: {fileID: 4461380354782954294}
   _itemPrefabs:
-  - {fileID: 4647427896967363013, guid: 9b86291455b104770a1151aea9aacc49, type: 3}
   - {fileID: 8888748200380207102, guid: f2d6afbc5f319324db7f953559ff41c2, type: 3}
   - {fileID: 8888748200380207102, guid: 5000a7e7c05ebbf41adcc9364d1b4cb9, type: 3}
   - {fileID: 8888748200380207102, guid: 0e0f390f8cc0ce646b80b80a07c45d3f, type: 3}
@@ -218,6 +217,7 @@ MonoBehaviour:
   - {fileID: 8888748200380207102, guid: 0066fdf8289bf8049ad4a8dc91ec6249, type: 3}
   - {fileID: 8888748200380207102, guid: 4a361b5c4d25aeb42a33e0e6e74c6dfd, type: 3}
   - {fileID: 8888748200380207102, guid: 27cca6751d56ca44eb9a4a1b71d0e7d9, type: 3}
+  - {fileID: 8888748200380207102, guid: af70e3ba8daae4b4fa67fa1df69cb21d, type: 3}
   _crateDebrisPrefab: {fileID: 2174788682393661635, guid: ded9e1071566fe741823c9db4a1ff267, type: 3}
   _crushSound: {fileID: 8300000, guid: a938ebece10187341a90c28a1d7298a1, type: 3}
 --- !u!82 &9030289435718165098
