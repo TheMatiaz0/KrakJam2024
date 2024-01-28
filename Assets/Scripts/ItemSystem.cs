@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System;
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace KrakJam2024
@@ -31,6 +32,8 @@ namespace KrakJam2024
         private Material spinFlipMaterial;
         [SerializeField]
         private Material flashBangMaterial;
+        [SerializeField]
+        private Material _blackAndWhite;
 
         [SerializeField] private BiggerHead _biggerHead;
 
@@ -160,11 +163,29 @@ namespace KrakJam2024
                 case ItemType.Box:
                     _timePausedFor = 3f;
                     break;
+                
+                case ItemType.BlackAndWhite:
+                    yield return EnableBlackAndWhite();
+                    
+                    break;
 
                 default:
                     Debug.Log("Not implemented : " + item.ItemType);
                     break;
             }
+        }
+
+        private IEnumerator EnableBlackAndWhite()
+        {
+            _blackAndWhite.SetInt("_Enabled", 1);
+            yield return new WaitForSeconds(10f);
+            _blackAndWhite.SetInt("_Enabled", 0);
+        }
+
+        [Button]
+        public void TestBW()
+        {
+            StartCoroutine(EnableBlackAndWhite());
         }
 
 
