@@ -124,7 +124,7 @@ namespace KrakJam2024
             switch (item.ItemType)
             {
                 case ItemType.UpsideDown:
-                    ExecuteUpsideDownSpin();
+                    yield return ExecuteUpsideDownSpin();
                     break;
 
                 case ItemType.IceRink:
