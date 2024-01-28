@@ -13,6 +13,7 @@ namespace KrakJam2024
 
         [SerializeField]
         private float HappinessDecreasePerSecond = 1.2f;
+        private float _timePausedFor = 0f;
 
         [SerializeField]
         private float timeForCooldownedEffects = 4;
@@ -79,6 +80,12 @@ namespace KrakJam2024
 
         private void Update()
         {
+            if (_timePausedFor > 0f)
+            {
+                _timePausedFor -= Time.deltaTime;
+                return;
+            }
+            
             TotalCatHappiness -= HappinessDecreasePerSecond * Time.deltaTime;
         }
 
@@ -149,6 +156,9 @@ namespace KrakJam2024
                     break;
                 case ItemType.BigHead:
                     _biggerHead.Run();
+                    break;
+                case ItemType.Box:
+                    _timePausedFor = 3f;
                     break;
 
                 default:
