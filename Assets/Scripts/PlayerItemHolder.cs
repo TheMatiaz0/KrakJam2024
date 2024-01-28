@@ -26,6 +26,11 @@ namespace KrakJam2024
         [SerializeField] private PlayerInput _input;
         [SerializeField] private float _throwPowerMultiply = 100f;
         [SerializeField] private Animator _animator;
+        [Header("Sounds")]
+        [SerializeField] private AudioClip _throwSound;
+        [SerializeField] private AudioClip _buildupSound;
+        [SerializeField] private AudioSource _audioSource;
+
         private PlayerView _playerView;
         private bool _takenThisFrame;
         private bool _canThrow;
@@ -95,10 +100,15 @@ namespace KrakJam2024
                 {
                     if (_input.actions[TAKE_ACTION].WasReleasedThisFrame())
                     {
+                        _audioSource.Stop();
                         ThrowHeldItem();
+                        _audioSource.PlayOneShot(_throwSound);
                     }
                     else
                     {
+                        _audioSource.clip = _buildupSound;
+                        _audioSource.loop = true;
+                        _audioSource.Play();
                         _currentPower += _powerPlusPerSecond * Time.fixedDeltaTime;
                         _currentPower = Mathf.Min(_currentPower, _throwPowerMax);
                     }
