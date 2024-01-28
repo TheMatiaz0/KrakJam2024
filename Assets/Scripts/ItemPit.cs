@@ -31,7 +31,7 @@ namespace KrakJam2024
 
         private bool IsItemThrownByPlayer(Item item)
         {
-            return item.LastOwner != null;
+            return item.CanBePutInPit;
         }
 
         private void OnTriggerExit2D(Collider2D other)
