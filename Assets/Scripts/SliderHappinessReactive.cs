@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace KrakJam2024
 {
@@ -27,8 +26,8 @@ namespace KrakJam2024
 
         private void OnDestroy()
         {
-            _itemSystem.OnHappinessUp-= OnHappinessUp;  
-            _itemSystem.OnHappinessDown-= OnHappinessDown;
+            _itemSystem.OnHappinessUp -= OnHappinessUp;  
+            _itemSystem.OnHappinessDown -= OnHappinessDown;
         }
 
         private void SliderRefresh(float value)
@@ -38,12 +37,12 @@ namespace KrakJam2024
 
         private void OnHappinessUp(float value)
         {
-            SliderRefresh(value);
+            SliderRefresh(_itemSystem.TotalCatHappiness);
         }
 
         private void OnHappinessDown(float value)
         {
-            SliderRefresh(value);
+            SliderRefresh(_itemSystem.TotalCatHappiness);
         }
     }
 }
