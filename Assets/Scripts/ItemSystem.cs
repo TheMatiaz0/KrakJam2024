@@ -95,6 +95,11 @@ namespace KrakJam2024
             ResetHappiness();
         }
 
+        private void Start()
+        {
+            ResetVfx();
+        }
+
         private void Update()
         {
             if (_timePausedFor > 0f)
@@ -155,9 +160,9 @@ namespace KrakJam2024
                 case ItemType.HolyWater:
                     yield return new WaitForSeconds(0.8f);
 
-                    flashBangMaterial.DOFloat(2.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+                    flashBangMaterial.DOFloat(2.0f, "_Contrast", 0.3f).SetEase(Ease.Linear).SetLink(gameObject);
                     yield return new WaitForSeconds(0.3f);
-                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 4.0f).SetEase(Ease.Linear);
+                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 4.0f).SetEase(Ease.Linear).SetLink(gameObject);
 
                     break;
                 case ItemType.BigHead:
@@ -211,28 +216,28 @@ namespace KrakJam2024
         {
             yield return new WaitForSeconds(1.0f);
 
-            spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+            spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic).SetLink(gameObject);
             yield return new WaitForSeconds(0.3f);
             spinFlipMaterial.SetInt("_FlipUpsideDown", 1);
             spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
-            spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+            spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic).SetLink(gameObject);
 
             yield return new WaitForSeconds(timeForCooldownedEffects);
 
-            spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic);
+            spinFlipMaterial.DOFloat(10.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.InCubic).SetLink(gameObject);
             yield return new WaitForSeconds(0.3f);
             spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
             spinFlipMaterial.SetFloat("_Spiral_Multiplier", -10.0f);
-            spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic);
+            spinFlipMaterial.DOFloat(0.0f, "_Spiral_Multiplier", 0.3f).SetEase(Ease.OutCubic).SetLink(gameObject);
         }
 
         private IEnumerator ExecuteBlackAndWhite()
         {
             yield return new WaitForSeconds(0.8f);
 
-            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear).SetLink(gameObject);
             yield return new WaitForSeconds(0.3f);
-            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear).SetLink(gameObject);
             _blackAndWhite.SetInt("_Enabled", 1);
             if (_volumeProfile.TryGet(out FilmGrain filmGrain))
             {
@@ -241,9 +246,9 @@ namespace KrakJam2024
 
             yield return new WaitForSeconds(10f);
 
-            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            flashBangMaterial.DOFloat(1.0f, "_Contrast", 0.3f).SetEase(Ease.Linear).SetLink(gameObject);
             yield return new WaitForSeconds(0.3f);
-            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+            flashBangMaterial.DOFloat(0.0f, "_Contrast", 0.3f).SetEase(Ease.Linear).SetLink(gameObject);
             filmGrain.active = false;
             _blackAndWhite.SetInt("_Enabled", 0);
         }
@@ -251,11 +256,11 @@ namespace KrakJam2024
         private IEnumerator ExecuteMirrorEffects()
         {
             yield return new WaitForSeconds(0.8f);
-            spinFlipMaterial.DOFloat(200.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic);
+            spinFlipMaterial.DOFloat(200.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic).SetLink(gameObject);
             yield return new WaitForSeconds(4.0f);
-            spinFlipMaterial.DOFloat(-200.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic);
+            spinFlipMaterial.DOFloat(-200.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic).SetLink(gameObject);
             yield return new WaitForSeconds(4.0f);
-            spinFlipMaterial.DOFloat(0.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic);
+            spinFlipMaterial.DOFloat(0.0f, "_Mirror_Folding_Frequency", 4f).SetEase(Ease.InOutCubic).SetLink(gameObject);
         }
 
         private IEnumerator StartThePixaWixaWithoutFixa()
@@ -264,16 +269,21 @@ namespace KrakJam2024
 
             var initialIntensity = _pixaWixaBezFixa.GetFloat("_WiggleIntensity");
 
-            _pixaWixaBezFixa.DOFloat(0.12f, "_WiggleIntensity", 4f).SetEase(Ease.InOutCubic);
-            _pixaWixaBezFixa.DOFloat(1.0f, "_HueShiftValue", 4f).SetEase(Ease.InOutCubic);
+            _pixaWixaBezFixa.DOFloat(0.12f, "_WiggleIntensity", 4f).SetEase(Ease.InOutCubic).SetLink(gameObject);
+            _pixaWixaBezFixa.DOFloat(1.0f, "_HueShiftValue", 4f).SetEase(Ease.InOutCubic).SetLink(gameObject);
             yield return new WaitForSeconds(10.0f);
 
-            _pixaWixaBezFixa.DOFloat(initialIntensity, "_WiggleIntensity", 2f).SetEase(Ease.InOutCubic);
-            _pixaWixaBezFixa.DOFloat(0.0f, "_HueShiftValue", 2f).SetEase(Ease.InOutCubic);
+            _pixaWixaBezFixa.DOFloat(initialIntensity, "_WiggleIntensity", 2f).SetEase(Ease.InOutCubic).SetLink(gameObject);
+            _pixaWixaBezFixa.DOFloat(0.0f, "_HueShiftValue", 2f).SetEase(Ease.InOutCubic).SetLink(gameObject);
 
         }
 
         private void OnDestroy()
+        {
+            ResetVfx();
+        }
+
+        private void ResetVfx()
         {
             spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
             spinFlipMaterial.SetFloat("_Spiral_Multiplier", 0.0f);
