@@ -57,10 +57,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Emission: 0
     - _EnableExternalAlpha: 0
     - _HueShiftSpeed: 0.2
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _VertexWiggleIntensity: 0
     - _WiggleDetail: 0.1
     - _WiggleIntensity: 0.3
     - _WiggleSpeed: 0.3
