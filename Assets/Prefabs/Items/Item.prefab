@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _body: {fileID: 2403279807417661005}
-  _catHappinessIncrease: 10
+  _catHappinessIncrease: 5
   _itemType: 0
   _pickUpClip: {fileID: 8300000, guid: 4adedd3790ff1ad458ba032ad86c309b, type: 3}
   _audioSource: {fileID: 5214724233458826927}
