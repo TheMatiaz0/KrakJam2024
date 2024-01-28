@@ -133,7 +133,7 @@ namespace KrakJam2024
                     break;
 
                 case ItemType.IceRink:
-                    var rb2D = item.LastOwner.Player.GetComponent<Rigidbody2D>();
+                    var rb2D = FindObjectOfType<PlayerMovement>().GetComponent<Rigidbody2D>();
                     cachedMaterial = rb2D.sharedMaterial;
                     rb2D.sharedMaterial = slipperyMaterial;
                     yield return new WaitForSeconds(timeForCooldownedEffects);
@@ -166,9 +166,8 @@ namespace KrakJam2024
                 
                 case ItemType.BlackAndWhite:
                     yield return EnableBlackAndWhite();
-                    
                     break;
-
+                
                 default:
                     Debug.Log("Not implemented : " + item.ItemType);
                     break;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -26,10 +27,22 @@ namespace KrakJam2024
         private void Awake()
         {
             _uiPanel.alpha = 0;
+            // Cursor.visible = false;
         }
 
         private void OpenPanel()
         {
+            var itmsys = FindObjectOfType<ItemSystem>();
+            if (itmsys != null)
+            {
+                Destroy(itmsys.gameObject);
+            }
+
+            EventSystem.current.SetSelectedGameObject(_mainMenuButton.gameObject);
+            _mainMenuButton.Select();
+
+            Time.timeScale = 0;
+
             _mainMenuButton.onClick.RemoveAllListeners();
             _restartButton.onClick.RemoveAllListeners();
 
@@ -41,12 +54,19 @@ namespace KrakJam2024
 
         private void LoadMainMenu()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("MainMenuScene");
         }
 
         private void StartOver()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        private void OnDestroy()
+        {
+            Time.timeScale = 1;
         }
 
         public void GameOver()

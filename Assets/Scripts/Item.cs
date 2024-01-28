@@ -24,7 +24,8 @@ namespace KrakJam2024
         [SerializeField] private AudioClip _pickUpClip;
         [SerializeField] private AudioSource _audioSource;
 
-        public PlayerOwnerTransmitter LastOwner { get; set; }
+        // public PlayerOwnerTransmitter LastOwner { get; set; }
+        public bool CanBePutInPit { get; private set; }
         public float CatHappinessIncrease => _catHappinessIncrease;
         public ItemType ItemType => _itemType;
 
@@ -45,6 +46,7 @@ namespace KrakJam2024
             _body.isKinematic = false;
             _body.AddForce(throwVector, ForceMode2D.Impulse);
             _body.angularVelocity = Random.Range(-360f, 360f);
+            CanBePutInPit = true;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -54,7 +56,6 @@ namespace KrakJam2024
 
             if (other.TryGetComponent<PlayerOwnerTransmitter>(out var ownerTransmitter))
             {
-                LastOwner = ownerTransmitter;
                 ownerTransmitter.Player?.RegisterGrabbedItem(this);
             }
         }

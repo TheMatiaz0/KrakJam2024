@@ -20,26 +20,33 @@ namespace KrakJam2024
         // [SerializeField] private AudioClip badSound;
         [SerializeField] private AudioClip buildupSound;
 
+        private float cachedValue;
+
         private void Awake()
         {
+            itemSystem.OnHappinessChanged += ItemSystem_OnHappinessChanged;
             itemSystem.OnHappinessUp += ItemSystem_OnHappinessUp;
             itemSystem.OnHappinessDown += ItemSystem_OnHappinessDown;
+        }
+
+        private void ItemSystem_OnHappinessChanged(float addedValue)
+        {
+            SetStage();
         }
 
         private void ItemSystem_OnHappinessUp(float addedValue)
         {
             CookGood();
-            SetStage();
         }
 
         private void ItemSystem_OnHappinessDown(float addedValue)
         {
             CookBad();
-            SetStage();
         }
-
+        
         private void OnDestroy()
         {
+            itemSystem.OnHappinessChanged -= ItemSystem_OnHappinessChanged;
             itemSystem.OnHappinessUp -= ItemSystem_OnHappinessUp;
             itemSystem.OnHappinessDown -= ItemSystem_OnHappinessDown;
         }
