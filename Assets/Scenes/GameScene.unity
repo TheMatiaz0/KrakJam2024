@@ -2343,6 +2343,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 253180830}
     m_Modifications:
+    - target: {fileID: 770799854442647228, guid: 92c5348e459a12a4585ee828fa07d90f, type: 3}
+      propertyPath: _itemSystem
+      value: 
+      objectReference: {fileID: 93234508}
     - target: {fileID: 1059296770208139310, guid: 92c5348e459a12a4585ee828fa07d90f, type: 3}
       propertyPath: m_Name
       value: Slider
