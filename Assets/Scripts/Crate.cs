@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 namespace KrakJam2024
 {
@@ -8,6 +9,7 @@ namespace KrakJam2024
         [SerializeField] private Rigidbody2D _body;
         [SerializeField] private List<Item> _itemPrefabs;
         [SerializeField] private ParticleSystem _crateDebrisPrefab;
+        [SerializeField] private AudioClip _crushSound;
         private CratesController _controller;
 
         public void Take()
@@ -34,6 +36,8 @@ namespace KrakJam2024
             }
 
             var particles = Instantiate(_crateDebrisPrefab, transform.position, _crateDebrisPrefab.transform.rotation);
+            var audio = particles.AddComponent<AudioSource>();
+            audio.PlayOneShot(_crushSound);
 
             var randomItem = _itemPrefabs[Random.Range(0, _itemPrefabs.Count)];
             Instantiate(randomItem, transform.position, Quaternion.identity);
