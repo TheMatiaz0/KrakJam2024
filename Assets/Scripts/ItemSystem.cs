@@ -91,6 +91,7 @@ namespace KrakJam2024
                 return;
             }
             
+            // TODO: do it on crate drop
             TotalCatHappiness -= HappinessDecreasePerSecond * Time.deltaTime;
         }
 
