@@ -31,6 +31,8 @@ namespace KrakJam2024
         [SerializeField]
         private Material flashBangMaterial;
 
+        [SerializeField] private BiggerHead _biggerHead;
+
         private PhysicsMaterial2D cachedMaterial;
 
         private float _totalCatHappiness;
@@ -145,8 +147,13 @@ namespace KrakJam2024
                     flashBangMaterial.DOFloat(0.0f, "_Contrast", 2.0f).SetEase(Ease.Linear);
 
                     break;
+                case ItemType.BigHead:
+                    _biggerHead.Run();
+                    break;
 
-                default: break;
+                default:
+                    Debug.Log("Not implemented : " + item.ItemType);
+                    break;
             }
         }
 
