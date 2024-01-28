@@ -1932,14 +1932,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 890800798}
     - target: {fileID: 19389498790685427, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
-      propertyPath: HappinessDecreasePerSecond
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 19389498790685427, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
-      propertyPath: _cratesController.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 19389498790685427, guid: 33bbe5cbac4be4545b42bb8f1a7ea050, type: 3}
       propertyPath: _cratesController.Array.data[0]
       value: 
       objectReference: {fileID: 1530664941}

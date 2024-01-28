@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e5908351eccb54c8701a78c1361fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HappinessDecreasePerSecond: 0.6
+  HappinessDecreasePerSecond: 0.65
   timeForCooldownedEffects: 5
   slipperyMaterial: {fileID: 6200000, guid: f77922abb8dad9646a5aa6537ec434db, type: 2}
   _startCatHappiness: 25
