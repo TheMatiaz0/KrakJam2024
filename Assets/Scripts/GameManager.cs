@@ -31,6 +31,7 @@ namespace KrakJam2024
 
         private void OpenPanel()
         {
+            Time.timeScale = 0;
             _mainMenuButton.onClick.RemoveAllListeners();
             _restartButton.onClick.RemoveAllListeners();
 
@@ -42,12 +43,19 @@ namespace KrakJam2024
 
         private void LoadMainMenu()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene("MainMenuScene");
         }
 
         private void StartOver()
         {
+            Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        private void OnDestroy()
+        {
+            Time.timeScale = 1;
         }
 
         public void GameOver()
