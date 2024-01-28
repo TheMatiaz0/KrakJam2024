@@ -34,6 +34,8 @@ namespace KrakJam2024
         private Material flashBangMaterial;
         [SerializeField]
         private Material _blackAndWhite;
+        [SerializeField]
+        private Wench _wench;
 
         [SerializeField] private BiggerHead _biggerHead;
 
@@ -166,6 +168,10 @@ namespace KrakJam2024
                 
                 case ItemType.BlackAndWhite:
                     yield return EnableBlackAndWhite();
+                    break;
+                
+                case ItemType.Wool:
+                    _wench.Wool();
                     break;
                 
                 default:
