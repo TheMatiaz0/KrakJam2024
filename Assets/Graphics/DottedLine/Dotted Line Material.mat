@@ -82,8 +82,8 @@ Material:
     - _DstBlend: 10
     - _DstBlendAlpha: 10
     - _EnableExternalAlpha: 0
-    - _Fadeout_End: 5
-    - _Fadeout_Start: 1
+    - _Fadeout_End: 150
+    - _Fadeout_Start: 10
     - _QueueOffset: 0
     - _SampleGI: 0
     - _SrcBlend: 5
@@ -95,5 +95,6 @@ Material:
     - _Color: {r: 1, g: 0.86562586, b: 0, a: 0.5019608}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Tint: {r: 0.6886792, g: 0.6494228, b: 0.22414559, a: 0.5019608}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0.5019608}
+    - _TintFinish: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
