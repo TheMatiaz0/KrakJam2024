@@ -104,6 +104,28 @@
                 },
                 {
                     "name": "",
+                    "id": "be642617-dede-4d77-a6e9-0b4cde0113a1",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Take",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c187b6ec-c925-4112-8683-9bf5a8db26d3",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Take",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2fad2044-a6eb-490a-ae39-abec029e2d5c",
                     "path": "<Gamepad>/leftShoulder",
                     "interactions": "",
@@ -164,7 +186,7 @@
                 {
                     "name": "up",
                     "id": "470ff491-f901-4bd5-8e77-0e92844c33ab",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -175,7 +197,7 @@
                 {
                     "name": "down",
                     "id": "e6e9a66f-b364-4625-bfdf-d87c14745edd",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -186,7 +208,7 @@
                 {
                     "name": "left",
                     "id": "dfc96585-767e-4526-a19a-8ff399efbea0",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -197,7 +219,7 @@
                 {
                     "name": "right",
                     "id": "44af92cd-8f1f-4da3-b77f-c28848e0bc04",
-                    "path": "<Keyboard>/l",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -263,7 +285,29 @@
                 {
                     "name": "",
                     "id": "d9e40a8c-737e-42d1-a3b5-e9e9deecc9c5",
-                    "path": "<Keyboard>/m",
+                    "path": "<Keyboard>/rightAlt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Catch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52192d3b-6af5-40d9-ba76-935e5fd60434",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Catch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6df0bd2e-cba3-4af6-b3f4-45895bae9b0e",
+                    "path": "<Keyboard>/rightCtrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
