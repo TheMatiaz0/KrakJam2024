@@ -58,7 +58,7 @@ MonoBehaviour:
   _volumeProfile: {fileID: 11400000, guid: d579725126963904da53ac0897120fe5, type: 2}
   _wench: {fileID: 0}
   _llamaEncounter: {fileID: 0}
-  _biggerHead: {fileID: 0}
+  _biggerHead: {fileID: 1604071823021049485}
 --- !u!1001 &3841889880255020063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -75,6 +75,10 @@ PrefabInstance:
       propertyPath: _pokrywka
       value: 
       objectReference: {fileID: 5154532091182842541}
+    - target: {fileID: 2836932489505280634, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3366945883686737767, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -139,6 +143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CatHead
       objectReference: {fileID: 0}
+    - target: {fileID: 9042623825644891746, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3055788731162469186, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
     m_RemovedGameObjects: []
@@ -198,6 +206,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.6, y: 0.9401035}
   m_EdgeRadius: 0
+--- !u!114 &1604071823021049485 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2527624050900384402, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
+  m_PrefabInstance: {fileID: 3841889880255020063}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0e73bd045ef41118f4de5565e258a4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2011113473883777912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3366945883686737767, guid: 6c0ceebf445594f39ae8c500c3acb931, type: 3}
