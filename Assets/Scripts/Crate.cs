@@ -33,6 +33,12 @@ namespace KrakJam2024
                 return;
             }
 
+            if (collision.collider.CompareTag("Player"))
+            {
+                Debug.Log("PLAYER DEAD!");
+                collision.collider.gameObject.GetComponent<PlayerMovement>()?.Snap();
+            }
+
             var particles = Instantiate(_crateDebrisPrefab, transform.position, _crateDebrisPrefab.transform.rotation);
 
             var randomItem = _itemPrefabs[Random.Range(0, _itemPrefabs.Count)];
