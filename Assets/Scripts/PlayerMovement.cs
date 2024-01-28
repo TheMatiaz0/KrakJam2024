@@ -1,3 +1,5 @@
+using DG.Tweening;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace KrakJam2024
@@ -13,6 +15,7 @@ namespace KrakJam2024
         [SerializeField] private Animator _animator;
 
         private PlayerView _view;
+        private bool _snapped;
 
         private void Awake()
         {
@@ -32,6 +35,7 @@ namespace KrakJam2024
         private void OnWalk(InputValue value)
         {
             _movementRead = value.Get<float>();
+            if (_snapped) _movementRead *= .1f;
             UpdateView(_movementRead);
         }
 
@@ -45,6 +49,25 @@ namespace KrakJam2024
             {
                 _rigidbody.AddForce(new Vector2(_movementRead * _movementMultiply * Time.fixedDeltaTime, 0f));
             }
+        }
+
+        [Button]
+        public void Snap()
+        {
+            if (_snapped)
+                return;
+
+            _view.transform.DOLocalRotate(new Vector3(0f, 0f, -90f), .12f);
+            _snapped = true;
+            Invoke(nameof(UnSnap), 3f);
+        }
+
+        public void UnSnap()
+        {
+            _snapped = false;
+            _rigidbody.velocity = Vector2.zero;
+            _view.transform.DOLocalRotate(new Vector3(0f, 0f, 0f), .12f);
+            // _view.transform.localRotation = Quaternion.Euler(0f, 0f, 0);
         }
 
         private void UpdateView(float movement)
