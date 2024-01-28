@@ -41,6 +41,8 @@ namespace KrakJam2024
         private VolumeProfile _volumeProfile;
         [SerializeField]
         private Wench _wench;
+        [SerializeField]
+        private GameObject _llamaEncounter;
 
         [SerializeField] private BiggerHead _biggerHead;
 
@@ -155,6 +157,9 @@ namespace KrakJam2024
                     break;
 
                 case ItemType.Llama:
+                    _llamaEncounter.SetActive(true);
+                    yield return new WaitForSeconds(timeForCooldownedEffects);
+                    _llamaEncounter.SetActive(false);
                     break;
 
                 case ItemType.HolyWater:
