@@ -25,6 +25,8 @@ namespace KrakJam2024
         private GameManager _gameManager;
         [SerializeField]
         private Material spinFlipMaterial;
+        [SerializeField]
+        private Material flashBangMaterial;
 
         private PhysicsMaterial2D cachedMaterial;
 
@@ -118,15 +120,32 @@ namespace KrakJam2024
 
                 case ItemType.Catnip:
                     Time.timeScale = 1.75f;
-                    yield return new WaitForSeconds(timeForCooldownedEffects);
+                    yield return new WaitForSecondsRealtime(timeForCooldownedEffects);
                     Time.timeScale = 1f;
                     break;
 
                 case ItemType.Llama:
                     break;
 
+                case ItemType.HolyWater:
+                    yield return new WaitForSeconds(0.8f);
+
+                    flashBangMaterial.DOFloat(2.0f, "_Contrast", 0.3f).SetEase(Ease.Linear);
+                    yield return new WaitForSeconds(0.3f);
+                    flashBangMaterial.DOFloat(0.0f, "_Contrast", 2.0f).SetEase(Ease.Linear);
+
+                    break;
+
+
                 default: break;
             }
+        }
+
+
+        private void OnDestroy()
+        {
+            spinFlipMaterial.SetInt("_FlipUpsideDown", 0);
+            spinFlipMaterial.SetFloat("_Spiral_Multiplier", 0.0f);
         }
     }
 }

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpiralEffect
-  m_Shader: {fileID: -6465566751694194690, guid: 5a48b58a33128fd4196313834cd4a06b, type: 3}
+  m_Name: FlashbangEffect
+  m_Shader: {fileID: -6465566751694194690, guid: 93f947d13f1c7164f902373edc67b540, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -53,6 +53,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Contrast: 0
     - _EnableExternalAlpha: 0
     - _FlipUpsideDown: 0
     - _Spiral_Multiplier: 0

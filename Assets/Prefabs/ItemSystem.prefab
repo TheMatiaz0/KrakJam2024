@@ -51,3 +51,4 @@ MonoBehaviour:
   _winCatHappiness: 100
   _gameManager: {fileID: 0}
   spinFlipMaterial: {fileID: 2100000, guid: 0d6c4cd371cd0e84d8af4368b13e6dd2, type: 2}
+  flashBangMaterial: {fileID: 2100000, guid: bfa33a90d0e7fc4458d120a9feec0d99, type: 2}

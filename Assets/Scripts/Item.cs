@@ -10,7 +10,8 @@ namespace KrakJam2024
         Glitter,
         BlackAndWhite,
         Flood,
-        Catnip
+        Catnip,
+        HolyWater
     }
 
     public class Item : MonoBehaviour
