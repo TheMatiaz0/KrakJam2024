@@ -1,5 +1,5 @@
 # Cathead
-A repository for Cathead, game created during 48 hours of KrakJam 2024. 
+A repository for Cathead, game created during 48 hours of KrakJam 2024 and won 5th place. 
 
 CO-OP 2 player (can be also played as single-player for harder difficulty) arcade physics-based psychedelic game.
 
