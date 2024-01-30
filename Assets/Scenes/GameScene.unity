@@ -2393,9 +2393,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2684093772089847147, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
+      propertyPath: m_Distance
+      value: 0.5799999
+      objectReference: {fileID: 0}
     - target: {fileID: 5694702975692716701, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_Name
       value: Winch
+      objectReference: {fileID: 0}
+    - target: {fileID: 5965799740114615617, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
+      propertyPath: m_Distance
+      value: 0.5600002
       objectReference: {fileID: 0}
     - target: {fileID: 7560940221958056922, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2436,6 +2444,10 @@ PrefabInstance:
     - target: {fileID: 7560940221958056922, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8885075774581233017, guid: 7c633cb78747b4aebbce23f4a6dbaf12, type: 3}
+      propertyPath: m_Distance
+      value: 0.5799999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
